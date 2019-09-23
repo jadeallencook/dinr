@@ -1,0 +1,20 @@
+ul.filters-component {
+    list-style: none;
+    padding: 0;
+    font-size: 0.75em;
+    overflow-x: scroll;
+    white-space: nowrap;
+    padding-left: 12px;
+    >li {
+        display: inline-block;
+        border: solid thin #9b9b9b;
+        margin-right: 15px;
+        padding: 5px 15px;
+        border-radius: 3px;
+    }
+}
+
+ul.filters-component::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}

@@ -1,0 +1,27 @@
+{
+    "profiles": {
+        "user-123": {
+
+        }
+    },
+    "hosts": {
+        "host-123": {
+            "name": "John Doe",
+            "rating": 4,
+            "location": 94538,
+            "image": null
+        }
+    },
+    "dinners": {
+        "94538": {
+            "mexican": {
+                "12119": {
+                    "dinner-1": {
+                        "title": "",
+                        "host": "host-123"
+                    }
+                }
+            }
+        }
+    }
+}
