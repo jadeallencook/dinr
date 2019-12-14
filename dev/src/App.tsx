@@ -4,7 +4,7 @@ import Footer from './presentational/Footer';
 import Results from './containers/Results';
 import './App.scss';
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
       <Navbar />

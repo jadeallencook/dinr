@@ -2,9 +2,9 @@ import React from 'react';
 import Banner from '../presentational/Banner';
 import './Results.scss';
 
-function Results() {
+const Results: React.FC = () => {
   return (
-      <div className="Results">
+    <div className="Results">
           <Banner />
           <h2>Coming Up</h2>
       </div>
