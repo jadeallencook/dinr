@@ -1,9 +1,5 @@
 # Dinr
 
-## Development
-
-### Backend
-
 Dates are stored like such:
 
 ```ssh
@@ -18,7 +14,7 @@ Times are stored like such:
 1:00PM = 1300
 ```
 
-#### Dinners
+## Dinners
 
 When a new dinner is created: 
 
@@ -51,7 +47,7 @@ When someone cancels a dinner:
 }
 ```
 
-#### Profiles
+## Profiles
 
 When a new profile is created:
 
@@ -82,7 +78,7 @@ When a new profile is created:
 }
 ```
 
-#### Reviews
+## Reviews
 
 When a new review is created:
 
