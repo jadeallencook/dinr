@@ -1,0 +1,44 @@
+@import '../colors.scss';
+
+.Navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: $white;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    border-bottom: solid thin $black;
+    display: grid;
+    height: 50px;
+    grid-template-columns: 75px 1fr 50px;
+    align-items:center;
+
+    >div:nth-child(1) {
+        >span {
+            font-size: 1.5em;
+            font-family: 'Roboto Condensed', sans-serif;
+            vertical-align: middle;
+        }
+    }
+
+    >div:nth-child(2) {
+        >input {
+            padding: 5px;
+            float: left;
+            border: solid thin $black;
+            width: 90%;
+            vertical-align: middle;
+        }
+    }
+
+    >div:nth-child(3) {
+        text-align: right;
+        >img {
+            margin-top: 3px;
+            height: 25px;
+            width: 25px;
+            border-radius: 15px;
+        }
+    }
+}

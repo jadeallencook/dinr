@@ -1,0 +1,62 @@
+{
+    "dinners": {
+        "dinners1": {
+            "title": "Taco Night",
+            "description": "We are having veggie tacos tonight!",
+            "price": 8,
+            "servings": 5,
+            "image": null,
+            "profile": "profile2",
+            "date": 1012020,
+            "time": 1800,
+            "attending": null
+        }
+    },
+    "locations": {
+        "48601": {
+            "1012020": {
+                "1800": ["dinners1"]
+            }
+        }
+    },
+    "reviews": {
+        "review1": {
+            "reviewer": "profile1",
+            "review": "The food was great!",
+            "profile": "profile2",
+            "rating": 5
+        }
+    },
+    "profiles": {
+        "profile1": {
+            "personal": {
+                "name": "John Smith",
+                "location": 48708,
+                "image": null
+            },
+            "dinners": {
+                "host": null,
+                "eaten": null
+            },
+            "reviews": {
+                "left": ["review1"],
+                "recieved": null
+            }
+        },
+        "profile2": {
+            "personal": {
+                "name": "Jane Doe",
+                "location": 48601,
+                "image": null
+            },
+            "dinners": {
+                "host": null,
+                "eaten": null
+            },
+            "reviews": {
+                "left": ["review1"],
+                "recieved": null
+            }
+        }
+    }
+}
