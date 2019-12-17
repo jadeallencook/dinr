@@ -6,7 +6,7 @@ type Year = '2019'|'2020';
 type Price = 1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|35|40|45|50|55|60|65|70|75|80|85|90|95|100;
 type Plates = 1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20;
 
-export default interface Dinner {
+export interface Dinner {
     title: string;
     description: string;
     image: string | null;
@@ -20,9 +20,10 @@ export default interface Dinner {
     };
     time: Time;
     attending: string[] | null;
+    uri: string | null;
 };
 
-export default interface Profile {
+export interface Profile {
     personal: {
         name: string;
         location: number;
@@ -45,7 +46,7 @@ export default interface Profile {
     }
 };
 
-export default interface Review {
+export interface Review {
     reviewer: string;
     review: string;
     profile: string;

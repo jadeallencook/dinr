@@ -3,6 +3,7 @@ import Banner from '../common/Banner';
 import dinners from '../assets/dinners-snapshot.json';
 import zipcodes from '../assets/zipcodes.json';
 import futureDateStrings from '../services/future-date-strings';
+import { Dinner } from '../interfaces';
 import './Results.scss';
 
 interface ResultsProps {
@@ -17,7 +18,7 @@ const Results: React.FC<ResultsProps> = props => {
   const city: string = props.searchCity.toLocaleLowerCase();
   const state: string = props.searchState;
   let codes = [];
-  let listings: any = [];
+  let listings: Dinner[] = [];
 
   if (zipcodes[state] && zipcodes[state][city]) {
     codes = zipcodes[state][city];
@@ -30,13 +31,11 @@ const Results: React.FC<ResultsProps> = props => {
         if (dinners[code] && dinners[code][date]) {
           Object.keys(dinners[code][date]).forEach(time => {
             Object.keys(dinners[code][date][time]).forEach(uid => {
-              const dinner = {
+              const listing: Dinner = {
                 ...dinners[code][date][time][uid],
-                uid: uid,
-                zipcode: code,
                 uri: `${code}/${date}/${time}/${uid}`
-              }
-              listings.push(dinner);
+              };
+              listings.push(listing);
             });
           });
         }
@@ -57,7 +56,7 @@ const Results: React.FC<ResultsProps> = props => {
         listings.length ?
           listings.map((listing: any) => {
             return (
-              <div key={listing.uid}
+              <div key={listing.uri}
                 className="listing"
                 onClick={() => props.setSelectedListing(listing.uri)}>
                 <h3>{listing.title}</h3>
