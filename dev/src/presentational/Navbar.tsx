@@ -8,7 +8,7 @@ const Navbar: React.FC = () => {
         <span>DINR</span>
       </div>
       <div>
-        <input placeholder="City or Zip" />
+        <input placeholder="City" type="text" />
       </div>
       <div>
         <img src="assets/default-profile.png" alt="Default profile" />
