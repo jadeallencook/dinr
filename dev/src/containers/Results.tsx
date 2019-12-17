@@ -2,6 +2,7 @@ import React from 'react';
 import Banner from '../common/Banner';
 import dinners from '../assets/dinners-snapshot.json';
 import zipcodes from '../assets/zipcodes.json';
+import futureDateStrings from '../services/future-date-strings';
 import './Results.scss';
 
 interface ResultsProps {
@@ -23,25 +24,7 @@ const Results: React.FC<ResultsProps> = props => {
   }
 
   if (codes.length) {
-    // TODO: move this logic to a service file
-    const date = new Date();
-    let month = date.getMonth() + 1;
-    let day = date.getDate();
-    let year = date.getFullYear();
-    let dates: string[] = [];
-    for (let num = 0; num < 30; num++) {
-      let dayString = (day.toString().length === 1) ? `0${day}` : day;
-      let string = `${month}${dayString}${year}`;
-      dates.push(string);
-      day++;
-      if (day > 31) {
-        day = 1;
-        month++;
-        month = month > 12 ? 1 : month;
-        year = month === 1 ? year + 1 : year;
-      }
-    }
-    // iterate over zipcodes and dates to get results
+    const dates = futureDateStrings();
     codes.forEach((code: string) => {
       dates.forEach((date: string) => {
         if (dinners[code] && dinners[code][date]) {
