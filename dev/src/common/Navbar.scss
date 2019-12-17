@@ -27,7 +27,17 @@
             padding: 5px;
             float: left;
             border: solid thin $black;
-            width: 90%;
+            width: 60%;
+            vertical-align: middle;
+        }
+        >select {
+            padding: 4px;
+            margin-left: 5px;
+            float: left;
+            border: solid thin $black;
+            width: 25%;
+            color: $black;
+            background-color: $white;
             vertical-align: middle;
         }
     }

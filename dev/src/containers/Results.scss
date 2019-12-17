@@ -1,5 +1,22 @@
 .Results {
     > h2 {
         margin-left: 25px;
+        line-height: 1em;
+        margin-top: 40px;
+    }
+    >div.listing {
+        padding: 0px 25px;
+        box-sizing: border-box;
+        margin: 50px 0px;
+        > p.details {
+            line-height: 0em;
+            font-size: 0.75em;
+            >span:not(:first-child) {
+                margin-left: 15px;
+            }
+        }
+        > h3 {
+            line-height: 0em;
+        }
     }
 }
