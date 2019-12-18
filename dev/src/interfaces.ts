@@ -52,3 +52,9 @@ export interface Review {
     profile: string;
     rating: Rating;
 };
+
+export interface Date {
+    day: Day;
+    month: Month;
+    year: Year;
+};
