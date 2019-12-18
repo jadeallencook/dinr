@@ -1,10 +1,6 @@
-/*
-    Convert military time to standard time 
-    1100 => 11:00AM
-    1300 => 1:00PM
-*/
+import {Time} from '../interfaces';
 
-export default (military: string | number): string => {
+export default (military: Time): string => {
     let string = '';
     return string;
 }
