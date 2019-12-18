@@ -1,18 +1,14 @@
-/*
-    Returns date stamps for next 30 days
-    ["1012020", "1022020", "1032020", "1042020"]
-*/
-
-export default (): string[] => {
-    const date = new Date();
+export default (start?: string): string[] => {
+    const date = start ? new Date(start) : new Date();
     let month = date.getMonth() + 1;
     let day = date.getDate();
     let year = date.getFullYear();
     let dates: string[] = [];
     for (let num = 0; num < 30; num++) {
       let dayString = (day.toString().length === 1) ? `0${day}` : day;
-      let string = `${month}${dayString}${year}`;
-      dates.push(string);
+      let monthString = (month.toString().length === 1) ? `0${month}` : month;
+      let dateString = `${monthString}${dayString}${year}`;
+      dates.push(dateString);
       day++;
       if (day > 31) {
         day = 1;

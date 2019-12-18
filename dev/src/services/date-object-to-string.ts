@@ -2,5 +2,7 @@ import { Date } from '../interfaces';
 
 export default (date: Date): string => {
     let { month, day, year } = date;
-    return `${month}${day.length === 1 ? `0${day}`: day}${year}`;
+    const dayString = day < 10 ? `0${day}`: day;
+    const monthString = month < 10 ? `0${month}`: month;
+    return `${monthString}${dayString}${year}`;
 }
