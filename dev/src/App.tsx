@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from './common/Navbar';
 import Footer from './common/Footer';
 import Results from './containers/Results';
+import Listing from './containers/Listing';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.scss';
 
@@ -31,7 +32,10 @@ const App: React.FC = () => {
         </Switch>
         <Switch>
           <Route path="/listing/:uri">
-            {selectedListing}
+            <Listing 
+              selectedListing={selectedListing}
+              setSelectedListing={setSelectedListing}
+            />
           </Route>
         </Switch>
         <Footer />

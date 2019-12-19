@@ -55,9 +55,10 @@ const Results: React.FC<ResultsProps> = props => {
       {
         // TODO: create seperate component for listing
         listings.length ?
-          listings.map((listing: any) => {
+          listings.map((listing: any, index: number) => {
             return (
               <Link to={`/listing/${listing.uri}`}
+                key={`listing-${index}`}
                 className="listing"
                 onClick={() => props.setSelectedListing(listing.uri)}>
                 <h3>{listing.title}</h3>
