@@ -4,6 +4,7 @@ import dinners from '../assets/dinners-snapshot.json';
 import zipcodes from '../assets/zipcodes.json';
 import futureDateStrings from '../services/future-date-strings';
 import { Dinner } from '../interfaces';
+import { Link } from 'react-router-dom';
 import './Results.scss';
 
 interface ResultsProps {
@@ -56,7 +57,7 @@ const Results: React.FC<ResultsProps> = props => {
         listings.length ?
           listings.map((listing: any) => {
             return (
-              <div key={listing.uri}
+              <Link to={`/listing/${listing.uri}`}
                 className="listing"
                 onClick={() => props.setSelectedListing(listing.uri)}>
                 <h3>{listing.title}</h3>
@@ -67,7 +68,7 @@ const Results: React.FC<ResultsProps> = props => {
                   <span><b>Plates: </b>{listing.plates}</span>
                   <span><b>Price: </b>${listing.price}</span>
                 </p>
-              </div>
+              </Link>
             )
           }) :
           null

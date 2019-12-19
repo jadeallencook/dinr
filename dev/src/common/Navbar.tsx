@@ -1,6 +1,7 @@
 import React from 'react';
 import './Navbar.scss';
 import states from '../assets/states.json';
+import { Link } from 'react-router-dom';
 
 interface NavbarProps {
   setSearchState: any;
@@ -22,7 +23,7 @@ const Navbar: React.FC<NavbarProps> = props => {
   return (
     <nav className="Navbar">
       <div>
-        <span>DINR</span>
+        <Link to="/">DINR</Link>
       </div>
       <div>
         <input

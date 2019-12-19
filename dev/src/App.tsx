@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from './common/Navbar';
 import Footer from './common/Footer';
 import Results from './containers/Results';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.scss';
 
 const App: React.FC = () => {
@@ -11,20 +12,30 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <Navbar
-        setSearchState={setSearchState}
-        searchState={searchState}
-        setSearchCity={setSearchCity}
-        searchCity={searchCity}
-      />
-      <Results
-        searchState={searchState}
-        searchCity={searchCity}
-        selectedListing={selectedListing}
-        setSelectedListing={setSelectedListing}
-      />
-      {selectedListing}
-      <Footer />
+      <Router>
+        <Navbar
+          setSearchState={setSearchState}
+          searchState={searchState}
+          setSearchCity={setSearchCity}
+          searchCity={searchCity}
+        />
+        <Switch>
+          <Route exact path="/">
+            <Results
+              searchState={searchState}
+              searchCity={searchCity}
+              selectedListing={selectedListing}
+              setSelectedListing={setSelectedListing}
+            />
+          </Route>
+        </Switch>
+        <Switch>
+          <Route path="/listing/:uri">
+            {selectedListing}
+          </Route>
+        </Switch>
+        <Footer />
+      </Router>
     </div>
   );
 }
