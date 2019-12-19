@@ -49,7 +49,9 @@ const Navbar: React.FC<NavbarProps> = props => {
         </select>
       </div>
       <div>
-        <img src="assets/default-profile.png" alt="Default profile" />
+        <Link to="/account">
+          <img src="assets/default-profile.png" alt="Default profile" />
+        </Link>
       </div>
     </nav>
   );

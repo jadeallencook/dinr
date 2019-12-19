@@ -13,6 +13,7 @@ interface ListingProps {
 
 interface SuccessProps {
     listing: any;
+    uri: string;
 }
 
 interface ProfileProps {
@@ -46,7 +47,7 @@ const Success: React.FC<SuccessProps> = props => {
                 <li><b>Price: </b>${price}</li>
             </ul>
             <Profile profile={profile} />
-            <Link to="/" className="rsvp">RSVP</Link>
+            <Link to={`/rsvp/${props.uri}`} className="rsvp">RSVP</Link>
         </div>
     );
 }
@@ -81,7 +82,7 @@ const Listing: React.FC<ListingProps> = props => {
                 (!listing) ?
                     (listing === false) ?
                         <h2>Could not find listing...</h2> :
-                        <h2>Loading...</h2> : <Success listing={listing} />
+                        <h2>Loading...</h2> : <Success listing={listing} uri={props.selectedListing} />
             }
         </div>
     );

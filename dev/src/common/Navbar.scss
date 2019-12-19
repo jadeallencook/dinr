@@ -12,7 +12,7 @@
     display: grid;
     height: 50px;
     grid-template-columns: 75px 1fr 50px;
-    align-items:center;
+    align-items: center;
 
     >div:nth-child(1) {
         >a {
@@ -32,6 +32,7 @@
             width: 60%;
             vertical-align: middle;
         }
+
         >select {
             padding: 4px;
             margin-left: 5px;
@@ -46,7 +47,8 @@
 
     >div:nth-child(3) {
         text-align: right;
-        >img {
+
+        >a>img {
             margin-top: 3px;
             height: 25px;
             width: 25px;
