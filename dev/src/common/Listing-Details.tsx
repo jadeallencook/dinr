@@ -2,6 +2,7 @@ import React from 'react';
 import dateObjectToStamp from '../services/date-object-to-stamp';
 import { Link } from 'react-router-dom';
 import ListingDetailsProfile from './Listing-Details-Profile';
+import './Listing-Details.scss';
 
 interface ListingDetailsProps {
     listing: any;
@@ -11,7 +12,7 @@ interface ListingDetailsProps {
 const ListingDetails: React.FC<ListingDetailsProps> = props => {
     const { title, description, plates, price, time, date, profile } = props.listing;
     return (
-        <div>
+        <div className="Listing-Details">
             <h2>{title}</h2>
             <p>{description}</p>
             <ul>
