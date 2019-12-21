@@ -1,55 +1,11 @@
 import React from 'react';
 import Dinners from '../assets/dinners-snapshot.json';
-import Profiles from '../assets/profiles-snapshot.json';
-import dateObjectToStamp from '../services/date-object-to-stamp';
-import acceptedPayments from '../services/accepted-payments';
-import { Link } from 'react-router-dom';
+import ListingDetails from '../common/Listing-Details';
 import './Listing.scss';
 
 interface ListingProps {
     selectedListing: any;
     setSelectedListing: any;
-}
-
-interface SuccessProps {
-    listing: any;
-    uri: string;
-}
-
-interface ProfileProps {
-    profile: any;
-}
-
-const Profile: React.FC<ProfileProps> = props => {
-    const profile = Profiles[props.profile];
-    const { name, street } = profile.personal;
-    return (
-        <div>
-            <h3>Hosted by {name}</h3>
-            <ul>
-                <li><b>Address: </b>{street}</li>
-                <li><b>Payments: </b>{acceptedPayments('')}</li>
-            </ul>
-        </div>
-    );
-}
-
-const Success: React.FC<SuccessProps> = props => {
-    const { title, description, plates, price, time, date, profile } = props.listing;
-    return (
-        <div>
-            <h2>{title}</h2>
-            <p>{description}</p>
-            <ul>
-                <li><b>Date: </b>{dateObjectToStamp(date)}</li>
-                <li><b>Time: </b>{time}</li>
-                <li><b>Plates: </b>{plates}</li>
-                <li><b>Price: </b>${price}</li>
-            </ul>
-            <Profile profile={profile} />
-            <Link to={`/rsvp/${props.uri}`} className="rsvp">RSVP</Link>
-        </div>
-    );
 }
 
 const Listing: React.FC<ListingProps> = props => {
@@ -82,7 +38,7 @@ const Listing: React.FC<ListingProps> = props => {
                 (!listing) ?
                     (listing === false) ?
                         <h2>Could not find listing...</h2> :
-                        <h2>Loading...</h2> : <Success listing={listing} uri={props.selectedListing} />
+                        <h2>Loading...</h2> : <ListingDetails listing={listing} uri={props.selectedListing} />
             }
         </div>
     );
