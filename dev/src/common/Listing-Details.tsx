@@ -1,30 +1,11 @@
 import React from 'react';
 import dateObjectToStamp from '../services/date-object-to-stamp';
-import Profiles from '../assets/profiles-snapshot.json';
-import acceptedPayments from '../services/accepted-payments';
 import { Link } from 'react-router-dom';
+import ListingDetailsProfile from './Listing-Details-Profile';
 
 interface ListingDetailsProps {
     listing: any;
     uri: string;
-}
-
-interface ListingDetailsProfileProps {
-    profile: any;
-}
-
-const ListingDetailsProfile: React.FC<ListingDetailsProfileProps> = props => {
-    const profile = Profiles[props.profile];
-    const { name, street } = profile.personal;
-    return (
-        <div>
-            <h3>Hosted by {name}</h3>
-            <ul>
-                <li><b>Address: </b>{street}</li>
-                <li><b>Payments: </b>{acceptedPayments('')}</li>
-            </ul>
-        </div>
-    );
 }
 
 const ListingDetails: React.FC<ListingDetailsProps> = props => {
