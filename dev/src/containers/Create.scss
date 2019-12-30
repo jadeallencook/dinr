@@ -1,0 +1,7 @@
+div.Create {
+    padding: 0px 25px;
+    box-sizing: border-box;
+    >form >label:not(:first-child) {
+        margin-top: 15px;
+    }
+}

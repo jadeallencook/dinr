@@ -7,11 +7,44 @@ body {
   padding: 0;
 }
 
-a.rsvp {
+a.rsvp,
+.btn {
   border: solid thin $black;
+  font-family: 'Gelasio', serif;
+  font-size: 1em;
   display: block;
   text-align: center;
   color: $black;
   text-decoration: none;
   padding: 10px 0px;
+  width: 100%;
+  background-color: $white;
+}
+
+.confirm {
+  background-color: $blue;
+  color: $white;
+}
+
+.discard {
+  background-color: $red;
+  color: $white;
+}
+
+
+
+label {
+  display: block;
+  font-weight: bold;
+  font-size: 0.75em;
+}
+
+textarea,
+input:not([type="checkbox"]):not([type="submit"]) {
+  font-family: 'Gelasio', serif;
+  border: solid thin $black;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: $white;
 }

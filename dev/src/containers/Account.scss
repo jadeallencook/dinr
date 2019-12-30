@@ -1,1 +1,16 @@
-div.Account {}
+@import '../colors.scss';
+
+div.Account {
+    padding: 0px 25px;
+    box-sizing: border-box;
+
+    >form {
+        >span {
+            font-size: 0.75em;
+        }
+        >label:not(:first-child),
+        >input[type=submit] {
+            margin-top: 15px;
+        }
+    }
+}

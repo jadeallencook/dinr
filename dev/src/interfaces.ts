@@ -26,7 +26,7 @@ export interface Dinner {
 export interface Profile {
     personal: {
         name: string;
-        location: number;
+        zipcode: number;
         street: string | null;
         image: string | null;
     };

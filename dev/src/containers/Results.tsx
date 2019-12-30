@@ -3,6 +3,7 @@ import Banner from '../common/Banner';
 import dinners from '../assets/dinners-snapshot.json';
 import zipcodes from '../assets/zipcodes.json';
 import futureDateStrings from '../services/future-date-strings';
+import militaryToStandardTime from '../services/military-to-standard-time';
 import { Dinner } from '../interfaces';
 import { Link } from 'react-router-dom';
 import './Results.scss';
@@ -65,7 +66,7 @@ const Results: React.FC<ResultsProps> = props => {
                 <p className="description">{listing.description}</p>
                 <p className="details">
                   <span><b>Date: </b>{`${listing.date.month}/${listing.date.day}/${listing.date.year}`}</span>
-                  <span><b>Time: </b>{listing.time}:00</span>
+                  <span><b>Time: </b>{militaryToStandardTime(listing.time)}</span>
                   <span><b>Plates: </b>{listing.plates}</span>
                   <span><b>Price: </b>${listing.price}</span>
                 </p>

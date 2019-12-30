@@ -4,6 +4,7 @@ import Footer from './common/Footer';
 import Results from './containers/Results';
 import Listing from './containers/Listing';
 import Account from './containers/Account';
+import Create from './containers/Create';
 import RSVP from './containers/RSVP';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.scss';
@@ -55,6 +56,11 @@ const App: React.FC = () => {
               selectedListing={selectedListing}
               setSelectedListing={setSelectedListing}
             />
+          </Route>
+        </Switch>
+        <Switch>
+          <Route exact path="/create">
+            <Create />
           </Route>
         </Switch>
         <Footer />

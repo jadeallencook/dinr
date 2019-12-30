@@ -1,5 +1,6 @@
 import React from 'react';
 import dateObjectToStamp from '../services/date-object-to-stamp';
+import militaryToStandardTime from '../services/military-to-standard-time';
 import { Link } from 'react-router-dom';
 import ListingDetailsProfile from './Listing-Details-Profile';
 import './Listing-Details.scss';
@@ -17,12 +18,14 @@ const ListingDetails: React.FC<ListingDetailsProps> = props => {
             <p>{description}</p>
             <ul>
                 <li><b>Date: </b>{dateObjectToStamp(date)}</li>
-                <li><b>Time: </b>{time}</li>
+                <li><b>Time: </b>{militaryToStandardTime(time)}</li>
                 <li><b>Plates: </b>{plates}</li>
                 <li><b>Price: </b>${price}</li>
             </ul>
             <ListingDetailsProfile profile={profile} />
-            <Link to={`/rsvp/${props.uri}`} className="rsvp">RSVP</Link>
+            <Link to={`/rsvp/${props.uri}`} className="btn confirm">RSVP</Link>
+            <br />
+            <Link to={`/`} className="btn">Return to results</Link>
         </div>
     );
 }

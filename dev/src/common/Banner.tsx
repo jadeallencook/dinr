@@ -1,12 +1,13 @@
 import React from 'react';
 import './Banner.scss';
+import { Link } from 'react-router-dom';
 
 const Banner: React.FC = () => {
   return (
-    <div className="Banner">
+    <Link to="/create" className="Banner">
       <h1>
         <span>HOST YOUR OWN</span><br />DINR</h1>
-    </div>
+    </Link>
   );
 }
 
