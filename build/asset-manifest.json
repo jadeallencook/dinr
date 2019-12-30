@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Dinr/build/static/css/main.9ce7511f.chunk.css",
+    "main.js": "/Dinr/build/static/js/main.7a3f39da.chunk.js",
+    "main.js.map": "/Dinr/build/static/js/main.7a3f39da.chunk.js.map",
+    "runtime-main.js": "/Dinr/build/static/js/runtime-main.5592a702.js",
+    "runtime-main.js.map": "/Dinr/build/static/js/runtime-main.5592a702.js.map",
+    "static/js/2.18eaaf33.chunk.js": "/Dinr/build/static/js/2.18eaaf33.chunk.js",
+    "static/js/2.18eaaf33.chunk.js.map": "/Dinr/build/static/js/2.18eaaf33.chunk.js.map",
+    "index.html": "/Dinr/build/index.html",
+    "precache-manifest.f575dc476464d713e4d7398c930ef4c8.js": "/Dinr/build/precache-manifest.f575dc476464d713e4d7398c930ef4c8.js",
+    "service-worker.js": "/Dinr/build/service-worker.js",
+    "static/css/main.9ce7511f.chunk.css.map": "/Dinr/build/static/css/main.9ce7511f.chunk.css.map",
+    "static/js/2.18eaaf33.chunk.js.LICENSE": "/Dinr/build/static/js/2.18eaaf33.chunk.js.LICENSE",
+    "static/media/Banner.scss": "/Dinr/build/static/media/banner.5aa57b03.jpeg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5592a702.js",
+    "static/js/2.18eaaf33.chunk.js",
+    "static/css/main.9ce7511f.chunk.css",
+    "static/js/main.7a3f39da.chunk.js"
+  ]
+}
