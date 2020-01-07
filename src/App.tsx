@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import * as firebase from 'firebase';
+import firebaseConfig from './assets/firebase-config.json';
 import Navbar from './common/Navbar';
 import Footer from './common/Footer';
 import Results from './containers/Results';
@@ -14,6 +16,13 @@ const App: React.FC = () => {
   const [searchCity, setSearchCity] = useState('Saginaw');
   const [selectedListing, setSelectedListing] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
+
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+  firebase.auth().onAuthStateChanged(user => {
+    console.log(user);
+  });
 
   return (
     <div className="App">
@@ -36,7 +45,7 @@ const App: React.FC = () => {
         </Switch>
         <Switch>
           <Route path="/listing/:uri">
-            <Listing 
+            <Listing
               selectedListing={selectedListing}
               setSelectedListing={setSelectedListing}
             />
