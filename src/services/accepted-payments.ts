@@ -1,21 +1,26 @@
-export default (payments: any): string => {
-    let paymentOptions = [];
+import { Payment } from '../interfaces';
 
-    paymentOptions.push(payments.cash ? `Cash` : null);
-    paymentOptions.push(payments.venmo ? `Venmo` : null);
-    paymentOptions.push(payments.paypal ? `Paypal` : null);
-    paymentOptions.push(payments.cashapp ? `Cash App` : null);
+export default (payments: Payment): string => {
+    let filtered = Object.keys(payments)
+        .filter(key => payments[key])
+        .map(string => {
+            if (string === 'paypal') {
+                return 'PayPal';
+            } else if (string === 'cashapp') {
+                return 'Cash App';
+            } else {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
+        });
 
-    let filteredPaymentOptions = paymentOptions.filter(Boolean);
-
-    if(filteredPaymentOptions.length === 1)
-        return `Only ${filteredPaymentOptions[0]}`
-    else if(filteredPaymentOptions.length === 2)
-        return `${filteredPaymentOptions[0]} and ${filteredPaymentOptions[1]}`;
-    else if(filteredPaymentOptions.length === 3)
-        return `${filteredPaymentOptions[0]}, ${filteredPaymentOptions[1]}, and ${filteredPaymentOptions[2]}`;
-    else if(filteredPaymentOptions.length === 4)
-        return `${filteredPaymentOptions[0]}, ${filteredPaymentOptions[1]}, ${filteredPaymentOptions[2]}, and ${filteredPaymentOptions[3]}`;
-    else
+    if (filtered.length === 1) {
+        return `Only ${filtered[0]}`
+    } else if (filtered.length === 2) {
+        return `${filtered[0]} and ${filtered[1]}`;
+    } else if (filtered.length > 2) {
+        filtered[filtered.length - 1] = `and ${filtered[filtered.length - 1]}`;
+        return filtered.join(', ');
+    } else {
         return `No Payment`;
+    }
 }
