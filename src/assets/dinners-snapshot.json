@@ -1,6 +1,6 @@
 {
     "48601": {
-        "01012020": {
+        "01252020": {
             "1800": {
                 "d23423": {
                     "title": "Vegetable Soup",
@@ -11,7 +11,7 @@
                     "price": 5,
                     "date": {
                         "month": 1,
-                        "day": 1,
+                        "day": 25,
                         "year": 2020
                     },
                     "time": 18,
@@ -19,7 +19,7 @@
                 }
             }
         }, 
-        "01022020": {
+        "01282020": {
             "1900": {
                 "d4564": {
                     "title": "Taco Night",
@@ -30,31 +30,10 @@
                     "price": 8,
                     "date": {
                         "month": 1,
-                        "day": 2,
+                        "day": 28,
                         "year": 2020
                     },
                     "time": 19,
-                    "attending": null
-                }
-            }
-        }
-    },
-    "95112": {
-        "12272019": {
-            "1800": {
-                "d23423": {
-                    "title": "Japanse Curry",
-                    "description": "We're making vegan Japanese curry with tofu, broccoli, and bok choy!",
-                    "image": null,
-                    "profile": "p1",
-                    "plates": 4,
-                    "price": 10,
-                    "date": {
-                        "month": 12,
-                        "day": 27,
-                        "year": 2019
-                    },
-                    "time": 18,
                     "attending": null
                 }
             }
