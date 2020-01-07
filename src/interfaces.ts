@@ -30,12 +30,7 @@ export interface Profile {
         street: string | null;
         image: string | null;
     };
-    payment: {
-        cash: boolean;
-        venmo: boolean;
-        paypal: boolean;
-        cashapp: boolean;
-    };
+    payment: Payment;
     dinners: {
         host: string[] | null;
         eaten: string[] | null;
@@ -45,6 +40,13 @@ export interface Profile {
         recieved: string[] | null;
     }
 };
+
+export interface Payment {
+    cash: boolean;
+    venmo: boolean;
+    paypal: boolean;
+    cashapp: boolean;
+}
 
 export interface Review {
     reviewer: string;
