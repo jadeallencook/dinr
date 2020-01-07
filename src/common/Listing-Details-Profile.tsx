@@ -11,7 +11,6 @@ const ListingDetailsProfile: React.FC<ListingDetailsProfileProps> = props => {
     const profile = Profiles[props.profile];
     const { payment, personal } = profile;
     const { name, street } = personal;
-    console.log(payment);
     return (
         <div className="Listing-Details-Profile">
             <h3>Hosted by {name}</h3>
