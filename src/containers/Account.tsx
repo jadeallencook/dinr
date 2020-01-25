@@ -3,12 +3,15 @@ import './Account.scss';
 import * as firebase from 'firebase/app';
 import 'firebase/database';
 import { Profile } from '../interfaces'
+import * as zipcodeToStateAndCity from '../assets/reverse-zipcode.json';
 
 interface AccountProps {
     currentUser: any;
     currentProfile: any;
     setCurrentProfile: any;
     setCurrentUser: any;
+    setSearchState: any;
+    setSearchCity: any;
 }
 
 const Account: React.FC<AccountProps> = props => {
@@ -68,6 +71,9 @@ const Account: React.FC<AccountProps> = props => {
                 setSuccessMessage('Your profile has been updated!');
                 delayedMessageReset();
                 getProfileSnapshot();
+                let [state, city]= zipcodeToStateAndCity[zipcode].split(':');
+                props.setSearchCity(city);
+                props.setSearchState(state);
             }).catch(() => delayedMessageReset());
         }
     }

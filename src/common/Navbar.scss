@@ -31,6 +31,8 @@
             border: solid thin $black;
             width: 60%;
             vertical-align: middle;
+            text-transform: capitalize;
+            max-width: 250px;
         }
 
         >select {
@@ -43,6 +45,8 @@
             background-color: $white;
             vertical-align: middle;
             border-radius: 0px;
+            height: 28px;
+            max-width: 75px;
         }
     }
 

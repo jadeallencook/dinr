@@ -30,10 +30,11 @@ const Navbar: React.FC<NavbarProps> = props => {
           onChange={searchCityHandler}
           placeholder="City"
           type="text"
-          defaultValue={props.searchCity} />
+          value={props.searchCity || ''} />
         <select
           onChange={searchStateHandler}
-          defaultValue={props.searchState}>
+          value={props.searchState || ''}
+          >
           {
             states.map((state: string) => {
               return (

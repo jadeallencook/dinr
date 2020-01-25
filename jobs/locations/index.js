@@ -3,6 +3,7 @@ const fs = require('fs');
 
 let zipcodes = {};
 let states = [];
+let reverse = {}
 
 Object.keys(codes).forEach(code => {
     code = codes[code];
@@ -25,7 +26,23 @@ Object.keys(codes).forEach(code => {
     }
 });
 
-fs.writeFile('../../dev/src/assets/zipcodes.json', JSON.stringify(zipcodes), (err) => {
+Object.keys(zipcodes).forEach(state => {
+    Object.keys(zipcodes[state]).forEach(city => {
+        zipcodes[state][city].forEach(code => {
+            reverse[code] = `${city}:${state}`;
+        });
+    });
+});
+
+fs.writeFile('../../src/assets/reverse-zipcode.json', JSON.stringify(reverse), (err) => {
+    if (err) {
+        return console.log(err);
+    } else {
+        console.log('Data was saved to "dev/src/assets/reverse-zipcode.json"');
+    }
+}); 
+
+fs.writeFile('../../src/assets/zipcodes.json', JSON.stringify(zipcodes), (err) => {
     if (err) {
         return console.log(err);
     } else {
@@ -33,7 +50,7 @@ fs.writeFile('../../dev/src/assets/zipcodes.json', JSON.stringify(zipcodes), (er
     }
 }); 
 
-fs.writeFile('../../dev/src/assets/states.json', JSON.stringify(states.sort()), (err) => {
+fs.writeFile('../../src/assets/states.json', JSON.stringify(states.sort()), (err) => {
     if (err) {
         return console.log(err);
     } else {

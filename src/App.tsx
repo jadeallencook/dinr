@@ -18,6 +18,7 @@ import 'firebase/analytics';
 import 'firebase/database';
 import firebaseConfig from './assets/firebase-config.json';
 import { Profile } from './interfaces';
+import zipcodeToStateAndCity from './assets/reverse-zipcode.json';
 
 const App: React.FC = props => {
   const [searchState, setSearchState] = useState('mi');
@@ -40,7 +41,20 @@ const App: React.FC = props => {
         .database()
         .ref(`profiles/${user.uid}`)
         .once('value')
-        .then(snapshot => setCurrentProfile(snapshot.val()));
+        .then(snapshot => {
+          const profile: Profile = snapshot.val();
+          let code = null;
+          if (profile.personal?.zipcode) {
+            const { zipcode } = profile.personal;
+            code = zipcodeToStateAndCity[zipcode];
+          }
+          if (code) {
+            const [city, state] = code.split(':');
+            setSearchCity(city);
+            setSearchState(state);
+          }
+          setCurrentProfile(profile);
+        });
     } else if (!currentUser) {
       setCurrentProfile(null);
     }
@@ -80,6 +94,8 @@ const App: React.FC = props => {
               setCurrentUser={setCurrentUser}
               currentProfile={currentProfile}
               setCurrentProfile={setCurrentProfile}
+              setSearchState={setSearchState}
+              setSearchCity={setSearchCity}
             />
           </Route>
         </Switch>
