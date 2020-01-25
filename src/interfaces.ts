@@ -24,18 +24,18 @@ export interface Dinner {
 };
 
 export interface Profile {
-    personal: {
-        name: string;
-        zipcode: number;
-        street: string | null;
-        image: string | null;
+    personal?: {
+        name?: string;
+        zipcode?: number;
+        street?: string | null;
+        image?: string | null;
     };
-    payment: Payment;
-    dinners: {
+    payments?: Payment;
+    dinners?: {
         host: string[] | null;
         eaten: string[] | null;
     };
-    reviews: {
+    reviews?: {
         left: string[] | null;
         recieved: string[] | null;
     }

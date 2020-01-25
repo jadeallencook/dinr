@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import * as firebase from 'firebase';
-import firebaseConfig from './assets/firebase-config.json';
+
+// components
 import Navbar from './common/Navbar';
 import Footer from './common/Footer';
 import Results from './containers/Results';
@@ -8,20 +8,42 @@ import Listing from './containers/Listing';
 import Account from './containers/Account';
 import Create from './containers/Create';
 import RSVP from './containers/RSVP';
-import { HashRouter as Router, Switch, Route } from 'react-router-dom';
-import './App.scss';
 
-const App: React.FC = () => {
+// app specific
+import './App.scss';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/analytics';
+import 'firebase/database';
+import firebaseConfig from './assets/firebase-config.json';
+import { Profile } from './interfaces';
+
+const App: React.FC = props => {
   const [searchState, setSearchState] = useState('mi');
   const [searchCity, setSearchCity] = useState('Saginaw');
   const [selectedListing, setSelectedListing] = useState(null);
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState<firebase.User | null>(null);
+  const [currentProfile, setCurrentProfile] = useState<Profile | null>(null);
 
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
+  // init firebase
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  }
 
+  // current user managment
   firebase.auth().onAuthStateChanged(user => {
-    console.log(user);
+    setCurrentUser(user);
+    if (user && !currentProfile && currentUser) {
+      firebase
+        .database()
+        .ref(`profiles/${user.uid}`)
+        .once('value')
+        .then(snapshot => setCurrentProfile(snapshot.val()));
+    } else if (!currentUser) {
+      setCurrentProfile(null);
+    }
   });
 
   return (
@@ -56,6 +78,8 @@ const App: React.FC = () => {
             <Account
               currentUser={currentUser}
               setCurrentUser={setCurrentUser}
+              currentProfile={currentProfile}
+              setCurrentProfile={setCurrentProfile}
             />
           </Route>
         </Switch>
