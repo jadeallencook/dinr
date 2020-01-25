@@ -108,8 +108,20 @@ const App: React.FC = props => {
           </Route>
         </Switch>
         <Switch>
-          <Route exact path="/create">
-            <Create />
+          <Route exact path="/create" render={() => {
+            return (
+              currentUser &&
+              currentProfile?.personal?.street &&
+              currentProfile?.personal?.zipcode
+              ) ? <Create /> : <Account
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+              currentProfile={currentProfile}
+              setCurrentProfile={setCurrentProfile}
+              setSearchState={setSearchState}
+              setSearchCity={setSearchCity}
+            />
+          }}>
           </Route>
         </Switch>
         <Footer />
