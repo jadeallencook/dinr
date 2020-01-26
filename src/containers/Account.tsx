@@ -25,7 +25,10 @@ const Account: React.FC<AccountProps> = props => {
         .database()
         .ref(`profiles/${props.currentUser.uid}`)
         .once('value')
-        .then(snapshot => props.setCurrentProfile(snapshot.val()));
+        .then(snapshot => {
+            console.log(`GET: profiles/${props.currentUser.uid}`);
+            props.setCurrentProfile(snapshot.val())
+        });
 
     const updateAccountHandler = (event?: any) => {
         if (event) {
@@ -53,6 +56,8 @@ const Account: React.FC<AccountProps> = props => {
         } else {
             Promise.all([
                 new Promise(res => {
+                    console.log(`SET: profiles/${props.currentUser.uid}/personal`);
+                    console.log(`SET: profiles/${props.currentUser.uid}/payments`);
                     firebase
                         .database()
                         .ref(`profiles/${props.currentUser.uid}/personal`)
@@ -143,6 +148,7 @@ const Account: React.FC<AccountProps> = props => {
                     .ref(`profiles/${uid}`)
                     .set(template)
                     .then(() => {
+                        console.log(`SET: profiles/${uid}`);
                         props.setCurrentProfile(template);
                         props.setCurrentUser(user);
                         setCreateAccountToggle(false);

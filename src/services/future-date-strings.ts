@@ -4,7 +4,7 @@ export default (start?: string): string[] => {
     let day = date.getDate();
     let year = date.getFullYear();
     let dates: string[] = [];
-    for (let num = 0; num < 30; num++) {
+    for (let num = 0; num < 7; num++) {
       let dayString = (day.toString().length === 1) ? `0${day}` : day;
       let monthString = (month.toString().length === 1) ? `0${month}` : month;
       let dateString = `${monthString}${dayString}${year}`;

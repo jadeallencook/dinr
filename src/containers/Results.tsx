@@ -1,62 +1,31 @@
 import React from 'react';
 import Banner from '../common/Banner';
-import dinners from '../assets/dinners-snapshot.json';
-import zipcodes from '../assets/zipcodes.json';
-import futureDateStrings from '../services/future-date-strings';
 import militaryToStandardTime from '../services/military-to-standard-time';
-import { Dinner } from '../interfaces';
 import { Link } from 'react-router-dom';
 import './Results.scss';
+import 'firebase/database';
 
 interface ResultsProps {
   searchState: string;
   searchCity: string;
   selectedListing: any;
   setSelectedListing: any;
+  searchResults: any;
 }
 
 const Results: React.FC<ResultsProps> = props => {
-
-  const city: string = props.searchCity.toLocaleLowerCase();
-  const state: string = props.searchState;
-  let codes = [];
-  let listings: Dinner[] = [];
-
-  if (zipcodes[state] && zipcodes[state][city]) {
-    codes = zipcodes[state][city];
-  }
-
-  if (codes.length) {
-    const dates = futureDateStrings();
-    codes.forEach((code: string) => {
-      dates.forEach((date: string) => {
-        if (dinners[code] && dinners[code][date]) {
-          Object.keys(dinners[code][date]).forEach(time => {
-            Object.keys(dinners[code][date][time]).forEach(uid => {
-              const listing: Dinner = {
-                ...dinners[code][date][time][uid],
-                uri: `${code}/${date}/${time}/${uid}`
-              };
-              listings.push(listing);
-            });
-          });
-        }
-      });
-    });
-  }
-
   return (
     <div className="Results">
       <Banner />
       {
-        !listings.length ?
+        !props.searchResults.length ?
           <h2>There are no listings for this area, sorry!</h2> :
           <h2>Upcoming Dinners</h2>
       }
       {
         // TODO: create seperate component for listing
-        listings.length ?
-          listings.map((listing: any, index: number) => {
+        props.searchResults.length ?
+          props.searchResults.map((listing: any, index: number) => {
             return (
               <Link to={`/listing/${listing.uri}`}
                 key={`listing-${index}`}

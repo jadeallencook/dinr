@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import getListingFromHash from '../services/get-listing-from-hash';
 import dateObjectToStamp from '../services/date-object-to-stamp';
 import miltaryToStandardTime from '../services/military-to-standard-time';
 import { Link } from 'react-router-dom';
@@ -11,13 +10,8 @@ interface RSVPProps {
 }
 
 const RSVP: React.FC<RSVPProps> = props => {
-
-    if (!props.selectedListing) {
-        props.setSelectedListing(window.location.hash.replace('#/rsvp/', ''));
-    }
-
     const [confirmed, setConfirmed] = useState(false);
-    const listing = getListingFromHash(props.selectedListing);
+    let listing = props.selectedListing;
 
     const confirm = () => {
         setConfirmed(true);

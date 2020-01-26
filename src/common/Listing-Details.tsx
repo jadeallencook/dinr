@@ -8,6 +8,7 @@ import './Listing-Details.scss';
 interface ListingDetailsProps {
     listing: any;
     uri: string;
+    currentUser: any;
 }
 
 const ListingDetails: React.FC<ListingDetailsProps> = props => {
@@ -23,7 +24,10 @@ const ListingDetails: React.FC<ListingDetailsProps> = props => {
                 <li><b>Price: </b>${price}</li>
             </ul>
             <ListingDetailsProfile profile={profile} />
-            <Link to={`/rsvp/${props.uri}`} className="btn confirm">RSVP</Link>
+            <Link 
+                to={props.currentUser ? `/rsvp/${props.uri.replace('#/listing/', '')}` : '/account'} 
+                className="btn confirm"
+            >RSVP</Link>
             <br />
             <Link to={`/`} className="btn">Return to results</Link>
         </div>
