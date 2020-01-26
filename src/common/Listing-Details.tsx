@@ -18,10 +18,9 @@ const ListingDetails: React.FC<ListingDetailsProps> = props => {
             <h2>{title}</h2>
             <p>{description}</p>
             <ul>
-                <li><b>Date: </b>{dateObjectToStamp(date)}</li>
-                <li><b>Time: </b>{militaryToStandardTime(time)}</li>
                 <li><b>Plates: </b>{plates}</li>
                 <li><b>Price: </b>${price}</li>
+                <li><b>When: </b>{dateObjectToStamp(date)} at {militaryToStandardTime(time)}</li>
             </ul>
             <ListingDetailsProfile profile={profile} />
             <Link 

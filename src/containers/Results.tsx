@@ -36,10 +36,9 @@ const Results: React.FC<ResultsProps> = props => {
                 <h3>{listing.title}</h3>
                 <p className="description">{listing.description}</p>
                 <p className="details">
-                  <span><b>Date: </b>{`${listing.date.month}/${listing.date.day}/${listing.date.year}`}</span>
-                  <span><b>Time: </b>{militaryToStandardTime(listing.time)}</span>
                   <span><b>Plates: </b>{listing.plates}</span>
                   <span><b>Price: </b>${listing.price}</span>
+                  <span className="date"><b>When: </b>{`${listing.date.month}/${listing.date.day}/${listing.date.year}`} at {militaryToStandardTime(listing.time)}</span>
                 </p>
               </Link>
             )

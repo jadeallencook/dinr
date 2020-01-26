@@ -8,7 +8,6 @@ interface BannerInterface {
 }
 
 const Banner: React.FC<BannerInterface> = props => {
-  console.log(props);
   return (
     <Link to={(
       props.currentUser &&
