@@ -145,6 +145,8 @@ const App: React.FC = props => {
         <Switch>
           <Route exact path="/">
             <Results
+              currentUser={currentUser}
+              currentProfile={currentProfile}
               searchState={searchState}
               searchCity={searchCity}
               selectedListing={selectedListing}

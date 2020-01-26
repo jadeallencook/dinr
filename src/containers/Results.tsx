@@ -11,12 +11,14 @@ interface ResultsProps {
   selectedListing: any;
   setSelectedListing: any;
   searchResults: any;
+  currentUser: any;
+  currentProfile: any;
 }
 
 const Results: React.FC<ResultsProps> = props => {
   return (
     <div className="Results">
-      <Banner />
+      <Banner currentUser={props.currentUser} currentProfile={props.currentProfile} />
       {
         !props.searchResults.length ?
           <h2>There are no listings for this area, sorry!</h2> :
