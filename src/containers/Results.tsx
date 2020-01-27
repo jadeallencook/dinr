@@ -33,13 +33,9 @@ const Results: React.FC<ResultsProps> = props => {
                 key={`listing-${index}`}
                 className="listing"
                 onClick={() => props.setSelectedListing(listing.uri)}>
-                <h3>{listing.title}</h3>
+                <h3>${listing.price} {listing.title}</h3>
                 <p className="description">{listing.description}</p>
-                <p className="details">
-                  <span><b>Plates: </b>{listing.plates}</span>
-                  <span><b>Price: </b>${listing.price}</span>
-                  <span className="date"><b>When: </b>{`${listing.date.month}/${listing.date.day}/${listing.date.year}`} at {militaryToStandardTime(listing.time)}</span>
-                </p>
+                <p className="details">{`${listing.date.month}/${listing.date.day}/${listing.date.year}`} at {militaryToStandardTime(listing.time)}</p>
               </Link>
             )
           }) :

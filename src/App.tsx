@@ -22,8 +22,8 @@ import zipcodeToStateAndCity from './assets/reverse-zipcode.json';
 import futureDateStrings from './services/future-date-strings';
 
 const App: React.FC = props => {
-  const [searchState, setSearchState] = useState('');
-  const [searchCity, setSearchCity] = useState('');
+  const [searchState, setSearchState] = useState('ca');
+  const [searchCity, setSearchCity] = useState('San Francisco');
   const [selectedListing, setSelectedListing] = useState<any>(null);
   const [currentUser, setCurrentUser] = useState<firebase.User | null>(null);
   const [currentProfile, setCurrentProfile] = useState<Profile | null>(null);

@@ -15,18 +15,14 @@ const ListingDetails: React.FC<ListingDetailsProps> = props => {
     const { title, description, plates, price, time, date, profile } = props.listing;
     return (
         <div className="Listing-Details">
-            <h2>{title}</h2>
+            <h2>${price} {title}</h2>
             <p>{description}</p>
-            <ul>
-                <li><b>Plates: </b>{plates}</li>
-                <li><b>Price: </b>${price}</li>
-                <li><b>When: </b>{dateObjectToStamp(date)} at {militaryToStandardTime(time)}</li>
-            </ul>
             <ListingDetailsProfile profile={profile} />
+            <span className="plates">There are {plates} plate(s) left</span>
             <Link 
                 to={props.currentUser ? `/rsvp/${props.uri.replace('#/listing/', '')}` : '/account'} 
                 className="btn confirm"
-            >RSVP</Link>
+            >RSVP for {dateObjectToStamp(date).replace('/2020', '')} at {militaryToStandardTime(time)}</Link>
             <br />
             <Link to={`/`} className="btn">Return to results</Link>
         </div>

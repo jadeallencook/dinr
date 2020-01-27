@@ -7,6 +7,21 @@ body {
   padding: 0;
 }
 
+select {
+  padding: 4px 14px 4px 4px;
+  float: left;
+  border-radius: 0px;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+  border: solid thin $black;
+  color: $black;
+  background-color: $white;
+  vertical-align: middle;
+  height: 26px;
+  max-width: 75px;
+  margin-right: 5px;
+}
+
 a.rsvp,
 .btn {
   border: solid thin $black;

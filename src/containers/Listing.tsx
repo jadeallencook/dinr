@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import Dinners from '../assets/dinners-snapshot.json';
+import React from 'react';
 import ListingDetails from '../common/Listing-Details';
 import './Listing.scss';
 
