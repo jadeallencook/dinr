@@ -76,7 +76,7 @@ const Account: React.FC<AccountProps> = props => {
                 setSuccessMessage('Your profile has been updated!');
                 delayedMessageReset();
                 getProfileSnapshot();
-                let [state, city]= zipcodeToStateAndCity[zipcode].split(':');
+                let [city, state]= zipcodeToStateAndCity[zipcode].split(':');
                 props.setSearchCity(city);
                 props.setSearchState(state);
             }).catch(() => delayedMessageReset());
