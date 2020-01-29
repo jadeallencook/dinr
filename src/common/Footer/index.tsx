@@ -1,12 +1,14 @@
 import React from 'react';
 import './style.scss';
 
-const Footer: React.FC = () => {
+const FooterComponent: React.FC = () => {
   return (
-    <div className="Footer">
-      <h1>Footer Component</h1>
+    <div className="FooterComponent">
+      <p>Eat Dinr | <b>Neighborhood Meal Sharing</b></p>
+      <p>Developed in Saginaw, Michigan</p>
+      <p>Copyright 2020</p>
     </div>
   );
-}
+};
 
-export default Footer;
+export default FooterComponent;

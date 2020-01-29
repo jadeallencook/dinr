@@ -1,3 +1,8 @@
 @import '../../colors.scss';
 
-.Footer {}
+.FooterComponent {
+    text-align: center;
+    margin: 25px 0px;
+    font-size: 0.75em;
+    line-height: .5em;
+}
