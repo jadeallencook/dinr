@@ -1,8 +1,8 @@
 // 48708 => Bay City, MI
 
-import * as zipcodes from '../assets/zipcodes.json';
+import zipcodes from '../assets/zipcodes.json';
 
 export default (zipcode: number): string | false => {
-    let city = zipcodes[zipcode];
+    let city = zipcodes[zipcode.toString()];
     return city || false;
 }
