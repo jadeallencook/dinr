@@ -4,7 +4,7 @@ import './Listing.scss';
 
 interface ListingProps {
     selectedListing: any;
-    setSelectedListing: any;
+    selectedListingHost: any;
     currentUser: any;
 }
 
@@ -14,7 +14,6 @@ const Listing: React.FC<ListingProps> = props => {
 
     if (hash && (!props.selectedListing || typeof props.selectedListing === 'string')) {
         hash = hash.replace('#/listing/', '');
-        props.setSelectedListing(hash);
     }
     
     return (
@@ -22,8 +21,8 @@ const Listing: React.FC<ListingProps> = props => {
             {
                 (props.selectedListing && typeof props.selectedListing === 'string') ?
                     <h2>Loading...</h2> :
-                    (props.selectedListing && typeof props.selectedListing === 'object') ?
-                        <ListingDetails listing={props.selectedListing} uri={hash} currentUser={props.currentUser} /> :
+                    (props.selectedListing && typeof props.selectedListing === 'object' && props.selectedListingHost) ?
+                        <ListingDetails selectedListingHost={props.selectedListingHost} listing={props.selectedListing} uri={hash} currentUser={props.currentUser} /> :
                         <h2>Could not find listing...</h2>
             }
         </div>

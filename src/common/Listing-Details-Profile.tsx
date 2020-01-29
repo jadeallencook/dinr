@@ -1,5 +1,4 @@
 import React from 'react';
-import Profiles from '../assets/profiles-snapshot.json';
 import acceptedPayments from '../services/accepted-payments';
 import './Listing-Details-Profile.scss';
 
@@ -8,18 +7,15 @@ interface ListingDetailsProfileProps {
 }
 
 const ListingDetailsProfile: React.FC<ListingDetailsProfileProps> = props => {
-    const profile = Profiles[props.profile];
-    const { payment, personal } = profile;
-    const { name, street } = personal;
-    return (
+    return props.profile ? (
         <div className="Listing-Details-Profile">
-            <h3>Hosted by {name}</h3>
+            <h3>Hosted by {props?.profile?.personal?.name || 'loading...'}</h3>
             <ul>
-                <li><b>Address: </b>{street}</li>
-                <li><b>Payments: </b>{acceptedPayments(payment)}</li>
+                <li><b>Address: {props?.profile?.personal?.street}</b>{}</li>
+                <li><b>Payments: </b>{acceptedPayments(props?.profile?.payments)}</li>
             </ul>
         </div>
-    );
+    ) : null;
 }
 
 export default ListingDetailsProfile;

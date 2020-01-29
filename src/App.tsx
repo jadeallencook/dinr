@@ -21,10 +21,11 @@ import { Profile } from './interfaces';
 import zipcodeToStateAndCity from './assets/reverse-zipcode.json';
 import futureDateStrings from './services/future-date-strings';
 
-const App: React.FC = props => {
+const App: React.FC = () => {
   const [searchState, setSearchState] = useState('ca');
   const [searchCity, setSearchCity] = useState('San Francisco');
   const [selectedListing, setSelectedListing] = useState<any>(null);
+  const [selectedListingHost, setSelectedListingHost] = useState<any>(null);
   const [currentUser, setCurrentUser] = useState<firebase.User | null>(null);
   const [currentProfile, setCurrentProfile] = useState<Profile | null>(null);
   const [previousSearch, setPreviousSearch] = useState('');
@@ -54,13 +55,26 @@ const App: React.FC = props => {
       });
   }
 
+  if (window.location.hash.indexOf('#/listing/') === 0 && !selectedListing) {
+    setSelectedListing(window.location.hash.replace('#/listing/', ''))
+  }
+
   // select listing
   if (typeof selectedListing !== 'object' && selectedListing !== previousListing) {
     firebase
       .database()
-      .ref(`dinners/${selectedListing}`)
+      .ref(`dinners/${selectedListing || window.location.hash.replace('#/listing/', '')}`)
       .once('value')
       .then(snapshot => {
+        setSelectedListing(snapshot.val());
+        setPreviousListing(snapshot.val());
+        firebase.database()
+          .ref(`profiles/${snapshot.val().profile}`)
+          .once('value')
+          .then(hostSnapshot => {
+            setSelectedListingHost(hostSnapshot.val());
+            console.log(`GET: profiles/${snapshot.val().profile}`);
+          });
         setSelectedListing(snapshot.val());
         setPreviousListing(snapshot.val());
         console.log(`GET: dinners/${selectedListing}`);
@@ -160,7 +174,7 @@ const App: React.FC = props => {
             <Listing
               currentUser={currentUser}
               selectedListing={selectedListing}
-              setSelectedListing={setSelectedListing}
+              selectedListingHost={selectedListingHost}
             />
           </Route>
         </Switch>
@@ -190,7 +204,10 @@ const App: React.FC = props => {
               currentUser &&
               currentProfile?.personal?.street &&
               currentProfile?.personal?.zipcode
-            ) ? <Create /> : <Account
+            ) ? <Create
+                currentUser={currentUser}
+                currentProfile={currentProfile}
+              /> : <Account
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
                 currentProfile={currentProfile}
