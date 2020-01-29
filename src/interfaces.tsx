@@ -24,7 +24,7 @@ export interface ReviewInterface {
     reviewer: string;
     review: string;
     profile: string;
-    rating: Rating;
+    rating: RatingType;
 };
 
 export interface DinnerInterface {

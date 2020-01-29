@@ -7,6 +7,7 @@ import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 // common
 import NavbarComponent from './common/Navbar';
 import FooterComponent from './common/Footer';
+import Loading from './common/Loading';
 
 // containers
 import BrowseComponent from './containers/Browse';
@@ -16,6 +17,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <Router>
+        <Loading />
         <NavbarComponent />
         <Switch>
           <Route exact path="/">

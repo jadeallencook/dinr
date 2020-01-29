@@ -1,0 +1,21 @@
+/* GLOBAL STYLESHEET */
+
+@import "./colors.scss";
+
+body {
+  background-color: $white;
+  font-family: "Gelasio", serif;
+}
+
+.primary-bg,
+.secondary-bg {
+  color: $white;
+}
+
+.primary-bg {
+  background-color: $primary;
+}
+
+.secondary-bg {
+  background-color: $secondary;
+}

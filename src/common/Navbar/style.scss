@@ -1,3 +1,10 @@
 @import '../../colors.scss';
 
-.Navbar {}
+.Navbar {
+    border-bottom: solid medium $black;
+    position: fixed;
+    display: grid;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
