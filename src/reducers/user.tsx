@@ -1,9 +1,9 @@
-export const user = (state = null, action: {
+export default (state = null, action: {
     type: string;
     payload: any;
 }) => {
     switch (action.type) {
         default:
-            return action.payload;
+            return action.payload || null;
     }
 }

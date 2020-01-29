@@ -8,6 +8,8 @@ import 'firebase/database';
 import 'firebase/analytics';
 import 'firebase/auth';
 import config from './assets/firebase-config.json';
+import { createStore } from 'redux';
+import reducers from './reducers';
 
 // common
 import NavbarComponent from './common/Navbar';
@@ -20,6 +22,7 @@ import AccountComponent from './containers/Account';
 import ErrorComponent from './containers/Error';
 
 const App: React.FC = () => {
+  const store = createStore(reducers);
   const [loading, setLoading] = useState<Boolean>(true);
 
   // init firebase
