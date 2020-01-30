@@ -1,14 +1,16 @@
 import isValidDatestamp from './is-valid-datestamp';
 
-test('01/12/2020 returns true', () => {
-    const datestamp = '01/12/2020';
-    expect(isValidDatestamp(datestamp)).toBe(true);
-});
-test('1/12/2020 returns false', () => {
-    const datestamp = '1/12/2020';
-    expect(isValidDatestamp(datestamp)).toBe(false);
-});
-test('01/45/2020 returns false', () => {
-    const datestamp = '01/45/2020';
-    expect(isValidDatestamp(datestamp)).toBe(false);
-});
+const array = [
+  { date: '01/12/2020', result: true },
+  { date: '1/12/2020', result: false },
+  { date: '01/45/2020', result: false },
+  { date: '01/12/2020', result: true },
+  { date: '01/12/////', result: false },
+  { date: '01/12/abcd', result: false }
+];
+
+for (const item of array) {
+  const { date, result } = item;
+  test(`${date} returns ${result}`, () =>
+    expect(isValidDatestamp(date)).toBe(result));
+}
