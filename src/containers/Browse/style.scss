@@ -1,4 +1,5 @@
 @import '../../colors.scss';
+@import '../../config.scss';
 
 .BrowseComponent {
     margin-bottom: 35px;
@@ -8,6 +9,7 @@
         padding: 50px 15px;
         font-size: 2em;
         color: $white;
+        border-radius: $radius;
         >h1,
         >p {
             margin: 0px;
