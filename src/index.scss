@@ -1,6 +1,7 @@
 /* GLOBAL STYLESHEET */
 
-@import "./colors.scss";
+@import './colors.scss';
+@import './config.scss';
 
 body {
   background-color: $white;
@@ -15,15 +16,38 @@ body {
   margin: 0px auto;
 }
 
+input[type='submit'].brand,
+button.brand {
+  font-weight: 100;
+  border: none;
+  font-size: 15px;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  border-radius: $radius;
+}
+
+input[type='text'].brand,
+input[type='number'].brand,
+input[type='password'].brand {
+  font-weight: 100;
+  border: none;
+  font-size: 15px;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  border-radius: $radius;
+}
+
 .primary-bg,
 .secondary-bg {
   color: $white;
 }
 
-.primary-bg {
-  background-color: $primary;
+.brand-bg {
+  color: $black;
+  background-color: $light;
 }
 
 .secondary-bg {
-  background-color: $secondary;
+  background-color: $primary;
+  color: $white;
 }

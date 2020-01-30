@@ -14,7 +14,7 @@ const NavbarComponent: React.FC = () => {
           </Link>
         </div>
         <div>
-          <input type="number" placeholder="Enter Zipcode" />
+          <input className="brand brand-bg" type="number" placeholder="Enter Zipcode" />
         </div>
         <div>
           <Link to="/account">

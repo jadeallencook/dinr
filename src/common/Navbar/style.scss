@@ -10,6 +10,11 @@
   left: 0;
   width: 100%;
   background-color: $white;
+  input {
+    width: 200px;
+    margin: 0px auto;
+    display: block;
+  }
   > div {
     display: grid;
     grid-template-columns: 50px 1fr 50px;
@@ -19,16 +24,6 @@
   img {
     width: 35px;
     border-radius: 25px;
-  }
-  input {
-    width: 100%;
-    background-color: $light;
-    font-weight: 100;
-    border: none;
-    font-size: 15px;
-    padding: 10px 15px;
-    box-sizing: border-box;
-    border-radius: $radius;
   }
   > div div:last-child {
     text-align: right;
