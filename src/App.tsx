@@ -38,6 +38,10 @@ const App: React.FC = () => {
       type: 'SET_LOADING',
       payload: false
     });
+    dispatch({
+      type: 'SET_USER',
+      payload: auth
+    });
   });
 
   return (

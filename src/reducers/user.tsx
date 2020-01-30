@@ -1,3 +1,7 @@
-export default (state: object | null = null, action: any) => {
-  return state;
-};
+export default (
+  state: object | null = null,
+  action: {
+    type: string;
+    payload: object | null;
+  }
+) => (action.type === 'SET_USER' ? action.payload : state);
