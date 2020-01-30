@@ -23,6 +23,7 @@ import ErrorComponent from './containers/Error';
 
 const App: React.FC = () => {
   
+  const dispatch = useDispatch()
   const loading = useSelector(state => state['loading']);
 
   // init firebase
@@ -33,6 +34,10 @@ const App: React.FC = () => {
 
   // current user managment
   firebase.auth().onAuthStateChanged(auth => {
+    dispatch({
+      type: 'SET_LOADING',
+      payload: false
+    });
   });
 
   return (
