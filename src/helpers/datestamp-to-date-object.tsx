@@ -7,8 +7,8 @@ import isValidDatestamp from './is-valid-datestamp';
 export default (datestamp: string): DateInterface | false => {
   return isValidDatestamp
     ? {
-        day: 1,
-        month: 12,
+        month: 1,
+        day: 12,
         year: 2020
       }
     : false;
