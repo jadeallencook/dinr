@@ -2,5 +2,7 @@
 
 export default (location: string): string => {
   let [city, state] = location.split(',');
-  return `${(city.replace(/\s/g, '')).toLowerCase()}_${(state.replace(' ', '')).toLowerCase()}`;
+  city = city.replace(/\s/g, '').toLowerCase();
+  state = state.replace(' ', '').toLowerCase();
+  return `${city}_${state}`;
 };
