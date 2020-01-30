@@ -6,7 +6,9 @@ const array = [
   { date: '01/45/2020', result: false },
   { date: '01/12/2020', result: true },
   { date: '01/12/////', result: false },
-  { date: '01/12/abcd', result: false }
+  { date: '01/12/abcd', result: false },
+  { date: 'mm/12/2020', result: false },
+  { date: '01/dd/2020', result: false }
 ];
 
 for (const item of array) {
