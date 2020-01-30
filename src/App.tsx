@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.scss';
 
 // app specific
@@ -8,8 +8,8 @@ import 'firebase/database';
 import 'firebase/analytics';
 import 'firebase/auth';
 import config from './assets/firebase-config.json';
-import { createStore } from 'redux';
-import reducers from './reducers';
+import { useSelector, useDispatch } from 'react-redux';
+import { login } from './actions';
 
 // common
 import NavbarComponent from './common/Navbar';
@@ -22,8 +22,9 @@ import AccountComponent from './containers/Account';
 import ErrorComponent from './containers/Error';
 
 const App: React.FC = () => {
-  const store = createStore(reducers);
-  const [loading, setLoading] = useState<Boolean>(true);
+
+  const dispatch = useDispatch();
+  const user = useSelector((state: any) => state.user);
 
   // init firebase
   if (!firebase.apps.length) {
@@ -32,14 +33,14 @@ const App: React.FC = () => {
   }
 
   // current user managment
-  firebase.auth().onAuthStateChanged(user => {
-    setLoading(false);
+  firebase.auth().onAuthStateChanged(auth => {
+    dispatch(login(auth));
   });
 
   return (
     <div className="App">
       <Router>
-        {loading ? <Loading /> : null}
+        {!user ? <Loading /> : null}
         <NavbarComponent />
         <Switch>
           <Route exact path="/">
