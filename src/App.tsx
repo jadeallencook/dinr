@@ -18,6 +18,7 @@ import LoadingComponent from './common/Loading';
 // containers
 import BrowseComponent from './containers/Browse';
 import AccountComponent from './containers/Account';
+import BrandComponent from './containers/Brand';
 import ErrorComponent from './containers/Error';
 
 const App: React.FC = () => {
@@ -45,6 +46,9 @@ const App: React.FC = () => {
           </Route>
           <Route exact path="/account">
             <AccountComponent />
+          </Route>
+          <Route exact path="/brand">
+            <BrandComponent />
           </Route>
           <Route component={ErrorComponent} />
         </Switch>
