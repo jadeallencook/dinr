@@ -19,6 +19,9 @@ import LoadingComponent from './common/Loading';
 import BrowseComponent from './containers/Browse';
 import AccountComponent from './containers/Account';
 import BrandComponent from './containers/Brand';
+import CreateComponent from './containers/Create';
+import DinnerComponent from './containers/Dinner';
+import ProfileComponent from './containers/Profile';
 import ErrorComponent from './containers/Error';
 
 const App: React.FC = () => {
@@ -58,6 +61,15 @@ const App: React.FC = () => {
           </Route>
           <Route exact path="/brand">
             <BrandComponent />
+          </Route>
+          <Route exact path="/create">
+            <CreateComponent />
+          </Route>
+          <Route exact path="/dinner">
+            <DinnerComponent />
+          </Route>
+          <Route exact path="/profile">
+            <ProfileComponent />
           </Route>
           <Route component={ErrorComponent} />
         </Switch>

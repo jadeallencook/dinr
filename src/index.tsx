@@ -5,7 +5,7 @@ import './normalize.scss';
 import 'animate.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { createStore } from 'redux';
+import { createStore, compose } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './reducers';
 
@@ -15,7 +15,7 @@ declare global {
   }
 }
 
-window.__REDUX_DEVTOOLS_EXTENSION__ = window.__REDUX_DEVTOOLS_EXTENSION__ || {};
+window.__REDUX_DEVTOOLS_EXTENSION__ = window.__REDUX_DEVTOOLS_EXTENSION__ || compose();
 
 const store = createStore(
   reducers,
