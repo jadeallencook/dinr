@@ -26,7 +26,7 @@ import ErrorComponent from './containers/Error';
 
 const App: React.FC = () => {
   
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const loading = useSelector(state => state['loading']);
 
   // init firebase
