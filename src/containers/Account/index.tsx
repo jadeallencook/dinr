@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.scss';
-import LoginComponent from '../../common/Login';
+import LoginComponent from './login';
+import SettingsComponent from './settings';
 import { useSelector } from 'react-redux';
 
 const AccountComponent: React.FC = () => {
@@ -8,7 +9,7 @@ const AccountComponent: React.FC = () => {
 
   return (
     <div className="AccountComponent container">
-      { !user ? <LoginComponent /> : null }
+      {!user ? <LoginComponent /> : <SettingsComponent />}
     </div>
   );
 };

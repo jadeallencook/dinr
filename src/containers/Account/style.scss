@@ -1,5 +1,37 @@
 @import '../../colors.scss';
 
 .AccountComponent {
+}
+
+.LoginComponent {
+  h2 {
     text-align: center;
+    margin: 25px 0px;
+  }
+  > form {
+    text-align: left;
+    max-width: 250px;
+    margin: 0px auto;
+    input,
+    button {
+      width: 100%;
+    }
+    span {
+      text-align: center;
+      display: block;
+      font-size: 0.75em;
+      margin: 25px 0px;
+      color: $primary;
+      cursor: pointer;
+    }
+    label,
+    button {
+      margin-top: 15px;
+    }
+    label {
+      display: block;
+      font-size: 0.75em;
+      margin-bottom: 5px;
+    }
+  }
 }

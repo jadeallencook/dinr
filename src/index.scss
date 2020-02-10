@@ -35,6 +35,8 @@ input[type='password'].brand {
   padding: 10px 15px;
   box-sizing: border-box;
   border-radius: $radius;
+  color: $black;
+  background-color: $light;
 }
 
 .primary-bg,
@@ -47,7 +49,20 @@ input[type='password'].brand {
   background-color: $light;
 }
 
-.secondary-bg {
+.primary-bg {
   background-color: $primary;
   color: $white;
+}
+
+.secondary-bg {
+  background-color: $secondary;
+  color: $white;
+}
+
+.margin-right {
+  margin-right: $small-unit;
+}
+
+.margin-bottom {
+  margin-bottom: $small-unit;
 }

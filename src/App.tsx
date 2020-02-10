@@ -25,7 +25,6 @@ import ProfileComponent from './containers/Profile';
 import ErrorComponent from './containers/Error';
 
 const App: React.FC = () => {
-  
   const dispatch = useDispatch();
   const loading = useSelector(state => state['loading']);
 
@@ -49,32 +48,35 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <Router>
-        {loading ? <LoadingComponent /> : null}
-        <NavbarComponent />
-        <Switch>
-          <Route exact path="/">
-            <BrowseComponent />
-          </Route>
-          <Route exact path="/account">
-            <AccountComponent />
-          </Route>
-          <Route exact path="/brand">
-            <BrandComponent />
-          </Route>
-          <Route exact path="/create">
-            <CreateComponent />
-          </Route>
-          <Route exact path="/dinner">
-            <DinnerComponent />
-          </Route>
-          <Route exact path="/profile">
-            <ProfileComponent />
-          </Route>
-          <Route component={ErrorComponent} />
-        </Switch>
-        <FooterComponent />
-      </Router>
+      {loading ? (
+        <LoadingComponent />
+      ) : (
+        <Router>
+          <NavbarComponent />
+          <Switch>
+            <Route exact path="/">
+              <BrowseComponent />
+            </Route>
+            <Route exact path="/account">
+              <AccountComponent />
+            </Route>
+            <Route exact path="/brand">
+              <BrandComponent />
+            </Route>
+            <Route exact path="/create">
+              <CreateComponent />
+            </Route>
+            <Route exact path="/dinner">
+              <DinnerComponent />
+            </Route>
+            <Route exact path="/profile">
+              <ProfileComponent />
+            </Route>
+            <Route component={ErrorComponent} />
+          </Switch>
+          <FooterComponent />
+        </Router>
+      )}
     </div>
   );
 };
