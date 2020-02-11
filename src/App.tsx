@@ -46,6 +46,12 @@ const App: React.FC = () => {
             type: 'SET_PROFILE',
             payload: snapshot.val()
           });
+          if (snapshot.val().personal.zipcode) {
+            dispatch({
+            type: 'SET_ZIPCODE',
+            payload: snapshot.val().personal.zipcode
+          });
+          }
         });
     } else {
       dispatch({

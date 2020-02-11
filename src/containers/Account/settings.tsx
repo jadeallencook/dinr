@@ -69,7 +69,7 @@ const SettingsComponent: React.FC = () => {
           className="brand margin-bottom"
           placeholder="48708"
           id="zipcode"
-          defaultValue={profile?.personal?.zipcode}
+          defaultValue={profile?.personal?.zipcode || null}
         />
         <br />
         <br />
