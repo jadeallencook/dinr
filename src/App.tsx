@@ -14,6 +14,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import NavbarComponent from './common/Navbar';
 import FooterComponent from './common/Footer';
 import LoadingComponent from './common/Loading';
+import NotificationsComponent from './common/Notifications';
 
 // containers
 import BrowseComponent from './containers/Browse';
@@ -36,6 +37,22 @@ const App: React.FC = () => {
 
   // current user managment
   firebase.auth().onAuthStateChanged(auth => {
+    if (auth) {
+      firebase
+        .database()
+        .ref(`profiles/${auth.uid}`)
+        .on('value', snapshot => {
+          dispatch({
+            type: 'SET_PROFILE',
+            payload: snapshot.val()
+          });
+        });
+    } else {
+      dispatch({
+        type: 'SET_PROFILE',
+        payload: null
+      });
+    }
     dispatch({
       type: 'SET_LOADING',
       payload: false
@@ -53,6 +70,7 @@ const App: React.FC = () => {
       ) : (
         <Router>
           <NavbarComponent />
+          <NotificationsComponent />
           <Switch>
             <Route exact path="/">
               <BrowseComponent />

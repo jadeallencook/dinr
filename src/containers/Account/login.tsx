@@ -1,9 +1,10 @@
 import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import { useDispatch } from 'react-redux';
 
 const LoginComponent: React.FC = () => {
-
+  const dispatch = useDispatch();
   return (
     <div className="LoginComponent">
       <h2>Let's get cookin!</h2>
@@ -15,7 +16,15 @@ const LoginComponent: React.FC = () => {
           firebase
             .auth()
             .signInWithEmailAndPassword(email, password)
-            .catch(error => console.log(error.message));
+            .catch(error =>
+              dispatch({
+                type: 'ADD_NOTIFICATION',
+                payload: {
+                  type: 'secondary',
+                  text: error.message
+                }
+              })
+            );
         }}
       >
         <label>Email</label>

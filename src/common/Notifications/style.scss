@@ -1,0 +1,28 @@
+@import '../../colors.scss';
+@import '../../config.scss';
+
+.NotificationsComponent {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    bottom: $small-unit;
+    >li {
+        width: 80%;
+        margin: 0 auto $small-unit auto;
+        border-radius: $radius;
+        max-width: $max-width;
+        padding: $small-unit;
+        list-style: none;
+        border: solid thin $black;
+        font-size: $small-font;
+        box-sizing: border-box;
+        padding-right: 25px;
+        >span.close-btn {
+            position: absolute;
+            right: $small-unit;
+            font-weight: bold;
+        }
+    }
+}

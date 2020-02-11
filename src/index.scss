@@ -9,6 +9,14 @@ body {
   font-weight: 100;
 }
 
+label {
+  font-size: 0.75em;
+  display: block;
+  font-weight: bold;
+  margin-left: 3px;
+  margin-bottom: 5px;
+}
+
 .container {
   box-sizing: border-box;
   max-width: 500px;
