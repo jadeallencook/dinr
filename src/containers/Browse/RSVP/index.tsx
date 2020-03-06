@@ -1,18 +1,23 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './style.scss';
 
 const RSVPComponent: React.FC = () => {
-    const zipcode = useSelector(state => state['zipcode']);
-    const results = useSelector(state => state['results']);
+    const rsvps = [{
+        "datestamp": "Sat, 07 Mar 2020 23:00:00 GMT",
+        "description": "Best potato soup ",
+        "plates": 10,
+        "price": 1,
+        "profile": "kCfrKK6cbcQwHl3lYd0A6JN2G1r1",
+        "title": "Potato soup"
+    }];
     return (
-        <div className="ResultsComponent container">
-            {zipcode && results.length ? (
+        <div className="RSVPComponent container">
+            {rsvps.length ? (
                 <div>
                     <h2>RSVPs</h2>
                     {
-                        results.map((result: any, index: number) => {
+                        rsvps.map((result: any, index: number) => {
                             const { title, description, datestamp, ref } = result;
                             const date = new Date(datestamp);
                             return (
