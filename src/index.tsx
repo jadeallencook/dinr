@@ -9,7 +9,7 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './reducers';
 import createSagaMiddleware from 'redux-saga';
-import { watchResults } from './sagas/results';
+import { rootSaga } from './sagas/root';
 
 declare global {
   interface Window {
@@ -28,7 +28,7 @@ const store = createStore(
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
-sagaMiddleware.run(watchResults);
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <Provider store={store}>
