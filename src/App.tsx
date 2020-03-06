@@ -90,7 +90,7 @@ const App: React.FC = () => {
             <Route exact path="/create">
               <CreateComponent />
             </Route>
-            <Route exact path="/dinner">
+            <Route path="/dinners">
               <DinnerComponent />
             </Route>
             <Route exact path="/profile">

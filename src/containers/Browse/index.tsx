@@ -25,10 +25,26 @@ const BrowseComponent: React.FC = () => {
         <p>HOST YOUR OWN</p>
         <h1>DINR</h1>
       </Link>
-      {zipcode && Object.keys(results).length ? (
+      {zipcode && results.length ? (
         <div>
           <h2>Results for {zipcode}</h2>
-          <p>There are currently no listings...</p>
+          {
+            results.map((result: any, index: number) => {
+              const { title, description, price, datestamp, ref, plates } = result;
+              const date = new Date(datestamp);
+              return (
+                <Link to={ref} className="Result" key={`result-${index}`}>
+                  <h3>${price} {title}</h3>
+                  <p>{description}</p>
+                  <ul>
+                    <li><b>Date: </b>{date.toLocaleDateString()}</li>
+                    <li><b>Time: </b>{date.toLocaleTimeString().replace(':00 ', ' ')}</li>
+                    <li><b>Plates: </b>{plates}</li>
+                  </ul>
+                </Link>
+              )
+            })
+          }
         </div>
       ) : (
         <div>
