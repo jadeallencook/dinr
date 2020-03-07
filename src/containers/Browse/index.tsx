@@ -2,21 +2,21 @@ import React from 'react';
 import './style.scss';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import ResultsComponent from './results';
+import RSVPComponent from './rsvp';
 import 'firebase/database';
 
 const BrowseComponent: React.FC = () => {
-  const zipcode = useSelector(state => state['zipcode']);
   const profile = useSelector(state => state['profile']);
-  const results = useSelector(state => state['results']);
   return (
     <div className="BrowseComponent container">
       <Link
         to={
           profile &&
-          profile.personal &&
-          profile.personal.zipcode &&
-          profile.personal.street &&
-          profile.personal.name
+            profile.personal &&
+            profile.personal.zipcode &&
+            profile.personal.street &&
+            profile.personal.name
             ? '/create'
             : '/account'
         }
@@ -25,33 +25,8 @@ const BrowseComponent: React.FC = () => {
         <p>HOST YOUR OWN</p>
         <h1>DINR</h1>
       </Link>
-      {zipcode && results.length ? (
-        <div>
-          <h2>Results for {zipcode}</h2>
-          {
-            results.map((result: any, index: number) => {
-              const { title, description, price, datestamp, ref, plates } = result;
-              const date = new Date(datestamp);
-              return (
-                <Link to={ref} className="Result" key={`result-${index}`}>
-                  <h3>${price} {title}</h3>
-                  <p>{description}</p>
-                  <ul>
-                    <li><b>Date: </b>{date.toLocaleDateString()}</li>
-                    <li><b>Time: </b>{date.toLocaleTimeString().replace(':00 ', ' ')}</li>
-                    <li><b>Plates: </b>{plates}</li>
-                  </ul>
-                </Link>
-              )
-            })
-          }
-        </div>
-      ) : (
-        <div>
-          <h2>No dinners this week!</h2>
-          <p>Support Dinr by hosting a dinner in your area.</p>
-        </div>
-      )}
+      <RSVPComponent />
+      <ResultsComponent />
     </div>
   );
 };
