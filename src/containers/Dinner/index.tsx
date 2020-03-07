@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.scss';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
 import 'firebase/database';
 import { useDispatch, useSelector } from 'react-redux';
 

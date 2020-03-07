@@ -2,7 +2,7 @@ import React from 'react';
 import './style.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import 'firebase/database';
+import ListingComponent from './listing';
 
 const BrowseComponent: React.FC = () => {
   const zipcode = useSelector(state => state['zipcode']);
@@ -38,37 +38,18 @@ const BrowseComponent: React.FC = () => {
         <div>
           <h2>Results for {zipcode}</h2>
           {results.map((result: any, index: number) => {
-            const {
-              title,
-              description,
-              price,
-              datestamp,
-              ref,
-              plates
-            } = result;
-            const date = new Date(datestamp);
-            return (
-              <Link to={ref} className="Result" key={`result-${index}`}>
-                <h3>
-                  ${price} {title}
-                </h3>
-                <p>{description}</p>
-                <ul>
-                  <li>
-                    <b>Date: </b>
-                    {date.toLocaleDateString()}
-                  </li>
-                  <li>
-                    <b>Time: </b>
-                    {date.toLocaleTimeString().replace(':00 ', ' ')}
-                  </li>
-                  <li>
-                    <b>Plates: </b>
-                    {plates}
-                  </li>
-                </ul>
-              </Link>
-            );
+            const { ref, plates, guests } = result;
+            const dinnerUid = ref.split('/')[2];
+            const platesLeft = guests
+              ? plates - Object.keys(guests).length
+              : plates;
+            const isReserved =
+              profile &&
+              profile.reservations &&
+              Object.keys(profile.reservations).indexOf(dinnerUid) !== -1;
+            return platesLeft && !isReserved ? (
+              <ListingComponent listing={result} key={`listing-${index}`} />
+            ) : null;
           })}
         </div>
       ) : (
