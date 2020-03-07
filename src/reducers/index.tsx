@@ -7,6 +7,7 @@ import zipcode from './zipcode';
 import results from './results';
 import dinner from './dinner';
 import host from './host';
+import reservations from './reservations';
 
 export default combineReducers({
   loading,
@@ -16,5 +17,6 @@ export default combineReducers({
   zipcode,
   results,
   dinner,
-  host
+  host,
+  reservations
 });
