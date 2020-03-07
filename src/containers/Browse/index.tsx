@@ -2,9 +2,9 @@ import React from 'react';
 import './style.scss';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import ResultsComponent from './Results';
+import ResultsComponent from './results';
+import RSVPComponent from './rsvp';
 import 'firebase/database';
-import RSVPComponent from './RSVP';
 
 const BrowseComponent: React.FC = () => {
   const profile = useSelector(state => state['profile']);
@@ -25,8 +25,8 @@ const BrowseComponent: React.FC = () => {
         <p>HOST YOUR OWN</p>
         <h1>DINR</h1>
       </Link>
-      <RSVPComponent></RSVPComponent>
-      <ResultsComponent></ResultsComponent>
+      <RSVPComponent />
+      <ResultsComponent />
     </div>
   );
 };
