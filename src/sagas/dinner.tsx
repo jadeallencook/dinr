@@ -9,7 +9,18 @@ function* watchDinnerAsync(action: any) {
           firebase
             .database()
             .ref(action.payload)
-            .once('value', snapshot => resolve(snapshot.val()));
+            .once('value', snapshot => {
+              resolve(
+                snapshot.val()
+                  ? {
+                      ...snapshot.val(),
+                      ref: action.payload
+                    }
+                  : {
+                      ref: action.payload
+                    }
+              );
+            });
         });
       })
     : null;
