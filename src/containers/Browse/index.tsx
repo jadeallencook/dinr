@@ -3,6 +3,7 @@ import './style.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ListingComponent from './listing';
+import filterReservations from '../../helpers/filter-reservations';
 
 const BrowseComponent: React.FC = () => {
   const zipcode = useSelector(state => state['zipcode']);
@@ -19,7 +20,8 @@ const BrowseComponent: React.FC = () => {
         profile &&
         profile.reservations &&
         Object.keys(profile.reservations).indexOf(dinnerUid) !== -1;
-      const isOwner = listing.profile && user && user.uid;
+      const isOwner =
+        listing.profile && user && user.uid && listing.profile === user.uid;
       return platesLeft && !isReserved && !isOwner ? listing : null;
     }
   );
@@ -31,6 +33,16 @@ const BrowseComponent: React.FC = () => {
     type: 'SET_HOST',
     payload: null
   });
+  if (
+    profile &&
+    profile.reservations &&
+    filterReservations(profile.reservations).length !== reservations.length
+  ) {
+    dispatch({
+      type: 'GET_RESERVATIONS',
+      payload: filterReservations(profile.reservations)
+    });
+  }
   return (
     <div className="BrowseComponent container">
       <Link
@@ -48,24 +60,24 @@ const BrowseComponent: React.FC = () => {
         <p>HOST YOUR OWN</p>
         <h1>DINR</h1>
       </Link>
-      {user && profile && reservations.length ? (
+      {user && profile && reservations.length && profile.reservations ? (
         <div>
-          <h2>Dinners in {zipcode}</h2>
-          {listings.map((listing: any, index: number) => (
+          <h2>Your Reservations</h2>
+          {reservations.map((listing: any, index: number) => (
             <ListingComponent listing={listing} key={`listing-${index}`} />
           ))}
         </div>
       ) : null}
       {zipcode && listings.length ? (
         <div>
-          <h2>Dinners in {zipcode}</h2>
+          <h2>Dinners Nearby ({zipcode})</h2>
           {listings.map((listing: any, index: number) => (
             <ListingComponent listing={listing} key={`listing-${index}`} />
           ))}
         </div>
       ) : (
         <div>
-          <h2>No dinners found!</h2>
+          <h2>No Dinners Nearby</h2>
           <p>Support Dinr by hosting a dinner in your area.</p>
         </div>
       )}
