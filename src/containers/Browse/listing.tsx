@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 interface ListingComponentProps {
   listing: object | null;
+  color?: string;
 }
 
 const ListingComponent: React.FC<ListingComponentProps> = (props: any) => {
@@ -18,7 +19,7 @@ const ListingComponent: React.FC<ListingComponentProps> = (props: any) => {
   const date = new Date(datestamp);
   const platesLeft = guests ? plates - Object.keys(guests).length : plates;
   return (
-    <Link to={ref} className="ListingComponent">
+    <Link to={ref} className={`ListingComponent ${props.color}`}>
       <h3>
         ${price} {title}
       </h3>

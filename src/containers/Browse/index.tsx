@@ -7,8 +7,20 @@ import ListingComponent from './listing';
 const BrowseComponent: React.FC = () => {
   const zipcode = useSelector(state => state['zipcode']);
   const profile = useSelector(state => state['profile']);
-  const results = useSelector(state => state['results']);
+  const listings = useSelector(state => state['results']);
+  const user = useSelector(state => state['user']);
   const dispatch = useDispatch();
+  const localListings = listings.filter((listing: any) => {
+    const { ref, plates, guests } = listing;
+    const dinnerUid = ref.split('/')[2];
+    const platesLeft = guests ? plates - Object.keys(guests).length : plates;
+    const isReserved =
+      profile &&
+      profile.reservations &&
+      Object.keys(profile.reservations).indexOf(dinnerUid) !== -1;
+    const isOwner = listing.profile && user && user.uid;
+    return platesLeft && !isReserved && !isOwner ? listing : null;
+  });
   dispatch({
     type: 'SET_DINNER',
     payload: null
@@ -34,27 +46,16 @@ const BrowseComponent: React.FC = () => {
         <p>HOST YOUR OWN</p>
         <h1>DINR</h1>
       </Link>
-      {zipcode && results.length ? (
+      {zipcode && localListings.length ? (
         <div>
-          <h2>Results for {zipcode}</h2>
-          {results.map((result: any, index: number) => {
-            const { ref, plates, guests } = result;
-            const dinnerUid = ref.split('/')[2];
-            const platesLeft = guests
-              ? plates - Object.keys(guests).length
-              : plates;
-            const isReserved =
-              profile &&
-              profile.reservations &&
-              Object.keys(profile.reservations).indexOf(dinnerUid) !== -1;
-            return platesLeft && !isReserved ? (
-              <ListingComponent listing={result} key={`listing-${index}`} />
-            ) : null;
-          })}
+          <h2>Dinners in {zipcode}</h2>
+          {listings.map((listing: any, index: number) => (
+            <ListingComponent listing={listing} key={`listing-${index}`} />
+          ))}
         </div>
       ) : (
         <div>
-          <h2>No dinners this week!</h2>
+          <h2>No dinners found!</h2>
           <p>Support Dinr by hosting a dinner in your area.</p>
         </div>
       )}
