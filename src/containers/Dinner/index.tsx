@@ -3,6 +3,7 @@ import './style.scss';
 import * as firebase from 'firebase/app';
 import 'firebase/database';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const DinnerComponent: React.FC = () => {
   const ref = window.location.hash.replace('#/', '');
@@ -163,10 +164,16 @@ const DinnerComponent: React.FC = () => {
           >
             Cancel Reservation
           </button>
-        ) : (
+        ) : user ? (
           <button className="brand primary-bg margin-right" onClick={reserve}>
             Reserve Plate
           </button>
+        ) : (
+          <Link to="/account">
+            <button className="brand primary-bg margin-right">
+              Reserve Plate
+            </button>
+          </Link>
         )}
         <br />
         <br />
