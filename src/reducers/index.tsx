@@ -6,6 +6,7 @@ import notifications from './notifications';
 import zipcode from './zipcode';
 import results from './results';
 import dinner from './dinner';
+import host from './host';
 
 export default combineReducers({
   loading,
@@ -14,5 +15,6 @@ export default combineReducers({
   notifications,
   zipcode,
   results,
-  dinner
+  dinner,
+  host
 });

@@ -6,11 +6,19 @@ import { useDispatch, useSelector } from 'react-redux';
 const DinnerComponent: React.FC = () => {
   const ref = window.location.hash.replace('#/', '');
   const dinner = useSelector(state => state['dinner']);
+  const host = useSelector(state => state['host']);
+  const user = useSelector(state => state['user']);
   const dispatch = useDispatch();
   if (!dinner || dinner.ref !== ref) {
     dispatch({
       type: 'GET_DINNER',
       payload: ref
+    });
+  }
+  if ((!host && dinner) || (host && host.uid !== dinner.profile)) {
+    dispatch({
+      type: 'GET_HOST',
+      payload: dinner.profile
     });
   }
   if (
@@ -21,9 +29,14 @@ const DinnerComponent: React.FC = () => {
     dinner.price &&
     dinner.profile &&
     dinner.title &&
-    dinner.ref === ref
+    dinner.ref === ref &&
+    host &&
+    host.personal &&
+    host.personal.name &&
+    host.personal.street
   ) {
-    const { datestamp, description, plates, price, profile, title } = dinner;
+    const { datestamp, description, plates, price, title, guests } = dinner;
+    const { name, street } = host.personal;
     const date = new Date(datestamp);
     return (
       <div className="DinnerComponent container">
@@ -33,10 +46,12 @@ const DinnerComponent: React.FC = () => {
         <p>{description}</p>
         <ul>
           <li>
-            <b>Host: </b>Jade Allen Cook
+            <b>Host: </b>
+            {name}
           </li>
           <li>
-            <b>Address: </b>123 Fake Street
+            <b>Address: </b>
+            {street}
           </li>
           <li>
             <b>Date: </b>
@@ -51,17 +66,41 @@ const DinnerComponent: React.FC = () => {
             {plates} left
           </li>
         </ul>
+        {user && user.uid === host.uid && guests ? (
+          <div>
+            <p>
+              <b>Your Guests:</b>
+            </p>
+            <ul>
+              <li>John Doe</li>
+            </ul>
+          </div>
+        ) : user && user.uid === host.uid && !guests ? (
+          <div><b>There are currently no reservations.</b></div>
+        ) : null}
         <button
           className="brand brand-bg margin-right"
-          onClick={() => window.location.hash = ''}
+          onClick={() => (window.location.hash = '')}
         >
           Browse All
         </button>
-        <button className="brand primary-bg margin-right">Reserve Plate</button>
-        <br /><br />
+        {user && user.uid === host.uid ? (
+          <span>
+            <button className="brand primary-bg margin-right">Edit</button>
+            <button className="brand secondary-bg margin-right margin-top">
+              Delete
+            </button>
+          </span>
+        ) : (
+          <button className="brand primary-bg margin-right">
+            Reserve Plate
+          </button>
+        )}
+        <br />
+        <br />
       </div>
     );
-  } else if (dinner && dinner.ref === ref) {
+  } else if (host && dinner && dinner.ref === ref) {
     window.location.hash = '/error';
     return (
       <div className="DinnerComponent container">
