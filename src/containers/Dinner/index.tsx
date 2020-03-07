@@ -1,5 +1,6 @@
 import React from 'react';
 import './style.scss';
+import * as firebase from 'firebase';
 import 'firebase/database';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -8,19 +9,81 @@ const DinnerComponent: React.FC = () => {
   const dinner = useSelector(state => state['dinner']);
   const host = useSelector(state => state['host']);
   const user = useSelector(state => state['user']);
+  const profile = useSelector(state => state['profile']);
   const dispatch = useDispatch();
+  const dinnerUid = dinner ? dinner.ref.split('/')[2] : '';
+  const isReserved =
+    dinner &&
+    profile &&
+    profile.reservations &&
+    Object.keys(profile.reservations).indexOf(dinnerUid) !== -1;
+  let platesLeft = 0;
+  if (dinner && dinner.guests && dinner.guests && dinner.plates) {
+    platesLeft = dinner.plates - Object.keys(dinner.guests).length;
+  } else if (dinner && dinner.plates) {
+    platesLeft = dinner.plates;
+  }
+
   if (!dinner || dinner.ref !== ref) {
     dispatch({
       type: 'GET_DINNER',
       payload: ref
     });
   }
+
   if ((!host && dinner) || (host && host.uid !== dinner.profile)) {
     dispatch({
       type: 'GET_HOST',
       payload: dinner.profile
     });
   }
+
+  function reserve() {
+    dispatch({
+      type: 'SET_LOADING',
+      payload: true
+    });
+    Promise.all([
+      new Promise((res, re) => {
+        firebase
+          .database()
+          .ref(`${ref}/guests/${user.uid}/`)
+          .set(profile.personal.name)
+          .then(() => res());
+      }),
+      new Promise((res, re) => {
+        firebase
+          .database()
+          .ref(`profiles/${user.uid}/reservations/${ref.split('/')[2]}`)
+          .set(ref)
+          .then(() => res());
+      })
+    ]).then(() => (window.location.hash = ''));
+  }
+
+  function unreserve() {
+    dispatch({
+      type: 'SET_LOADING',
+      payload: true
+    });
+    Promise.all([
+      new Promise((res, re) => {
+        firebase
+          .database()
+          .ref(`${ref}/guests/${user.uid}/`)
+          .remove()
+          .then(() => res());
+      }),
+      new Promise((res, re) => {
+        firebase
+          .database()
+          .ref(`profiles/${user.uid}/reservations/${ref.split('/')[2]}`)
+          .remove()
+          .then(() => res());
+      })
+    ]).then(() => (window.location.hash = ''));
+  }
+
   if (
     dinner &&
     dinner.datestamp &&
@@ -35,7 +98,7 @@ const DinnerComponent: React.FC = () => {
     host.personal.name &&
     host.personal.street
   ) {
-    const { datestamp, description, plates, price, title, guests } = dinner;
+    const { datestamp, description, price, title, guests } = dinner;
     const { name, street } = host.personal;
     const date = new Date(datestamp);
     return (
@@ -63,7 +126,7 @@ const DinnerComponent: React.FC = () => {
           </li>
           <li>
             <b>Plates: </b>
-            {plates} left
+            {platesLeft} left
           </li>
         </ul>
         {user && user.uid === host.uid && guests ? (
@@ -76,7 +139,9 @@ const DinnerComponent: React.FC = () => {
             </ul>
           </div>
         ) : user && user.uid === host.uid && !guests ? (
-          <div><b>There are currently no reservations.</b></div>
+          <div>
+            <b>There are currently no reservations.</b>
+          </div>
         ) : null}
         <button
           className="brand brand-bg margin-right"
@@ -91,8 +156,15 @@ const DinnerComponent: React.FC = () => {
               Delete
             </button>
           </span>
+        ) : isReserved ? (
+          <button
+            className="brand secondary-bg margin-right"
+            onClick={unreserve}
+          >
+            Cancel Reservation
+          </button>
         ) : (
-          <button className="brand primary-bg margin-right">
+          <button className="brand primary-bg margin-right" onClick={reserve}>
             Reserve Plate
           </button>
         )}
