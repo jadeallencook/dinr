@@ -3,13 +3,22 @@ import 'firebase/database';
 import { takeEvery, put, call } from 'redux-saga/effects';
 
 function* watchDinnerAsync(action: any) {
-    // TODO: add firebase call with action payload
-    yield put({
-      type: 'SET_DINNER',
-      payload: null
-    });
+  const dinner: object = action.payload
+    ? yield call(() => {
+        return new Promise((resolve, reject) => {
+          firebase
+            .database()
+            .ref(action.payload)
+            .once('value', snapshot => resolve(snapshot.val()));
+        });
+      })
+    : null;
+  yield put({
+    type: 'SET_DINNER',
+    payload: dinner
+  });
 }
 
 export function* watchDinner() {
-  yield takeEvery('SET_DINNER', watchDinnerAsync);
+  yield takeEvery('GET_DINNER', watchDinnerAsync);
 }

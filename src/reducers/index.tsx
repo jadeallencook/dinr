@@ -5,6 +5,7 @@ import profile from './profile';
 import notifications from './notifications';
 import zipcode from './zipcode';
 import results from './results';
+import dinner from './dinner';
 
 export default combineReducers({
   loading,
@@ -12,5 +13,6 @@ export default combineReducers({
   profile,
   notifications,
   zipcode,
-  results
+  results,
+  dinner
 });
