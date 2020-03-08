@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "643a679188fff88bd5451a449d20318a",
+    "revision": "6b5def68520cb219f1dd4b3e13595e72",
     "url": "/Dinr/build/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Dinr/build/static/css/2.ff29e5f6.chunk.css"
   },
   {
-    "revision": "944f51c1f356b587d733",
+    "revision": "7b7a1ca026c06e55255d",
     "url": "/Dinr/build/static/css/main.3257615c.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Dinr/build/static/js/2.0ec1d01c.chunk.js.LICENSE"
   },
   {
-    "revision": "944f51c1f356b587d733",
-    "url": "/Dinr/build/static/js/main.2b6a459e.chunk.js"
+    "revision": "7b7a1ca026c06e55255d",
+    "url": "/Dinr/build/static/js/main.621e3eb8.chunk.js"
   },
   {
     "revision": "2b665b954fc17cb4551d",
