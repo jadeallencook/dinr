@@ -24,7 +24,6 @@ const LoginComponent: React.FC = () => {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .then(() => loginHandler(email, password))
       .catch(error =>
         dispatch({
           type: 'ADD_NOTIFICATION',
