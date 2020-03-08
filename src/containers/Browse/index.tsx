@@ -62,7 +62,7 @@ const BrowseComponent: React.FC = () => {
       </Link>
       {user && profile && reservations.length && profile.reservations ? (
         <div>
-          <h2>Your Reservations</h2>
+          <h2>Upcoming Reservations</h2>
           {reservations.map((listing: any, index: number) => (
             <ListingComponent listing={listing} key={`listing-${index}`} />
           ))}
@@ -70,7 +70,7 @@ const BrowseComponent: React.FC = () => {
       ) : null}
       {zipcode && listings.length ? (
         <div>
-          <h2>Dinners Nearby ({zipcode})</h2>
+          <h2>Dinners Nearby</h2>
           {listings.map((listing: any, index: number) => (
             <ListingComponent listing={listing} key={`listing-${index}`} />
           ))}

@@ -2,6 +2,9 @@
 @import '../../config.scss';
 
 .BrowseComponent {
+    h3 {
+        text-transform: capitalize;
+    }
     margin-bottom: 35px;
     >a.banner {
         display: block;
@@ -49,5 +52,10 @@
             margin-bottom: 10px;
             margin-top: 25px;
         }
+    }
+    >select.main-dropdown {
+        background-color: $white;
+        border: solid thin $black;
+        font-weight: bold;
     }
 }

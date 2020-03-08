@@ -46,16 +46,31 @@ const CreateComponent: React.FC = () => {
             const ref = `${locationToUrl(
               location
             )}_${date.toLocaleDateString().replace(/\//g, '-')}`;
-            firebase
-              .database()
-              .ref(`dinners/${ref}`)
-              .push({
-                ...dinnerTemp,
-                ...{
-                  ...{ title, price, plates, datestamp, description },
-                  profile: user.uid
-                }
+
+            Promise.all([
+              new Promise((res, rej) => {
+                firebase
+                  .database()
+                  .ref(`dinners/${ref}`)
+                  .push({
+                    ...dinnerTemp,
+                    ...{
+                      ...{ title, price, plates, datestamp, description },
+                      profile: user.uid
+                    }
+                  })
+                  .then(response => res(response.key))
+                  .catch(error => rej(error));
               })
+              // new Promise((res, rej) => {
+              //   firebase
+              //     .database()
+              //     .ref(`users/${user.uid}/hosting/`)
+              //     .set()
+              //     .then(() => res())
+              //     .catch(error => rej(error));
+              // })
+            ])
               .then(() => {
                 dispatch({
                   type: 'ADD_NOTIFICATION',

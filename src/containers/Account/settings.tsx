@@ -11,6 +11,17 @@ const SettingsComponent: React.FC = () => {
   return (
     <div className="SettingsComponent">
       <h2>Account Settings</h2>
+      <p id="email">{user.email}</p>
+      <p>
+        <small>
+          You don't have to fill in any information to get started but we highly
+          suggest adding a zipcode because this allows us to help you find
+          dinners nearby. To reserve a dinner, you will need to fill out a name
+          and if you decide to host a dinner you will to fill out a street
+          address too.
+        </small>
+      </p>
+      <br />
       <form
         onSubmit={event => {
           event.preventDefault();
@@ -35,7 +46,8 @@ const SettingsComponent: React.FC = () => {
                   text: 'Successfully saved your changes!'
                 }
               });
-            }).catch((error: any) => {
+            })
+            .catch((error: any) => {
               dispatch({
                 type: 'ADD_NOTIFICATION',
                 payload: {
@@ -46,7 +58,6 @@ const SettingsComponent: React.FC = () => {
             });
         }}
       >
-        <p id="email">{user.email}</p>
         <label>Name</label>
         <input
           type="text"
@@ -72,6 +83,11 @@ const SettingsComponent: React.FC = () => {
           defaultValue={profile?.personal?.zipcode || null}
         />
         <br />
+        <small>
+          <p>
+            <b>All information, except for email, is made public.</b>
+          </p>
+        </small>
         <br />
         <input
           className="brand primary-bg margin-right margin-bottom"
