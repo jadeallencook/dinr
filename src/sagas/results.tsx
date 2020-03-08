@@ -8,15 +8,10 @@ import flattenResultsArray from '../helpers/flatten-results-array';
 function* watchResultsAsync(action: any) {
   if (action.payload > 9999) {
     const location = zipcodeToLocation(action.payload);
-    const datestamps = Array(3)
-      .fill(new Date())
-      .map((date, index) => {
-        var today = new Date();
-        var tomorrow = new Date();
-        return new Date(tomorrow.setDate(today.getDate() + index))
-          .toLocaleDateString()
-          .replace(/\//g, '-');
-      });
+    const today = new Date().toLocaleDateString().split('/');
+    const month = today[0];
+    const year = today[2];
+    const datestamps = [`${month}_${year}`];
     const results: Object[] = location
       ? yield call(() => {
           return Promise.all(
@@ -24,6 +19,7 @@ function* watchResultsAsync(action: any) {
               stamp =>
                 new Promise((resolve, reject) => {
                   const ref = `dinners/${locationToUrl(location)}_${stamp}`;
+                  console.log(ref);
                   firebase
                     .database()
                     .ref(ref)
@@ -32,7 +28,10 @@ function* watchResultsAsync(action: any) {
                       const response = snapshot.val();
                       if (response) {
                         Object.keys(response).forEach(key => {
-                          object[key] = { ...response[key], ref: `${ref}/${key}` };
+                          object[key] = {
+                            ...response[key],
+                            ref: `${ref}/${key}`
+                          };
                         });
                       }
                       resolve(object);
