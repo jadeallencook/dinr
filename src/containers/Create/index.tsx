@@ -31,6 +31,10 @@ const CreateComponent: React.FC = () => {
           const date = new Date(
             `${month}/${day}/${year} ${hour}:${minutes} ${ampm}`
           );
+          const uid = `${month}_${day}_${year}_${hour}_${minutes}_${ampm}_${user.uid}`;
+          const datestamp = date.toUTCString();
+          const location = zipcodeToLocation(profile?.personal?.zipcode) || '';
+          const ref = `${locationToUrl(location)}_${month}_${year}/${uid}`;
           if (new Date() > date) {
             dispatch({
               type: 'ADD_NOTIFICATION',
@@ -40,36 +44,29 @@ const CreateComponent: React.FC = () => {
               }
             });
           } else {
-            const datestamp = date.toUTCString();
-            const location =
-              zipcodeToLocation(profile?.personal?.zipcode) || '';
-            const ref = `${locationToUrl(
-              location
-            )}_${date.toLocaleDateString().replace(/\//g, '-')}`;
-
             Promise.all([
               new Promise((res, rej) => {
                 firebase
                   .database()
                   .ref(`dinners/${ref}`)
-                  .push({
+                  .set({
                     ...dinnerTemp,
                     ...{
                       ...{ title, price, plates, datestamp, description },
                       profile: user.uid
                     }
                   })
-                  .then(response => res(response.key))
+                  .then(response => res())
+                  .catch(error => rej(error));
+              }),
+              new Promise((res, rej) => {
+                firebase
+                  .database()
+                  .ref(`profiles/${user.uid}/hosting/${uid}`)
+                  .set(ref)
+                  .then(() => res())
                   .catch(error => rej(error));
               })
-              // new Promise((res, rej) => {
-              //   firebase
-              //     .database()
-              //     .ref(`users/${user.uid}/hosting/`)
-              //     .set()
-              //     .then(() => res())
-              //     .catch(error => rej(error));
-              // })
             ])
               .then(() => {
                 dispatch({
