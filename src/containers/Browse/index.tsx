@@ -72,7 +72,7 @@ const BrowseComponent: React.FC = () => {
         <p>HOST YOUR OWN</p>
         <h1>DINR</h1>
       </Link>
-      {hosting ? (
+      {hosting && hosting.length ? (
         <div>
           <h2>Hosted By You</h2>
           {hosting.map((listing: any, index: number) => (
