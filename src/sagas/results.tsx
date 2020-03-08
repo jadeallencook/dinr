@@ -19,7 +19,6 @@ function* watchResultsAsync(action: any) {
               stamp =>
                 new Promise((resolve, reject) => {
                   const ref = `dinners/${locationToUrl(location)}_${stamp}`;
-                  console.log(ref);
                   firebase
                     .database()
                     .ref(ref)

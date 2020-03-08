@@ -8,6 +8,7 @@ import results from './results';
 import dinner from './dinner';
 import host from './host';
 import reservations from './reservations';
+import hosting from './hosting';
 
 export default combineReducers({
   loading,
@@ -18,5 +19,6 @@ export default combineReducers({
   results,
   dinner,
   host,
-  reservations
+  reservations,
+  hosting
 });
