@@ -14,11 +14,8 @@ const SettingsComponent: React.FC = () => {
       <p id="email">{user.email}</p>
       <p>
         <small>
-          You don't have to fill in any information to get started but we highly
-          suggest adding a zipcode because this allows us to help you find
-          dinners nearby. To reserve a dinner, you will need to fill out a name
-          and if you decide to host a dinner you will to fill out a street
-          address too.
+          No information is required but we recommend adding a
+          zipcode to find dinners nearby and post dinners.
         </small>
       </p>
       <br />
