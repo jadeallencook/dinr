@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Dinr/build/static/css/main.3257615c.chunk.css",
-    "main.js": "/Dinr/build/static/js/main.013e28cb.chunk.js",
-    "main.js.map": "/Dinr/build/static/js/main.013e28cb.chunk.js.map",
+    "main.js": "/Dinr/build/static/js/main.b31560cf.chunk.js",
+    "main.js.map": "/Dinr/build/static/js/main.b31560cf.chunk.js.map",
     "runtime-main.js": "/Dinr/build/static/js/runtime-main.31a4375a.js",
     "runtime-main.js.map": "/Dinr/build/static/js/runtime-main.31a4375a.js.map",
     "static/css/2.ff29e5f6.chunk.css": "/Dinr/build/static/css/2.ff29e5f6.chunk.css",
     "static/js/2.0ec1d01c.chunk.js": "/Dinr/build/static/js/2.0ec1d01c.chunk.js",
     "static/js/2.0ec1d01c.chunk.js.map": "/Dinr/build/static/js/2.0ec1d01c.chunk.js.map",
     "index.html": "/Dinr/build/index.html",
-    "precache-manifest.8594608d34c5a5d09ea22d50007d661e.js": "/Dinr/build/precache-manifest.8594608d34c5a5d09ea22d50007d661e.js",
+    "precache-manifest.48cce69b28647c09fb7057242fa2ccc3.js": "/Dinr/build/precache-manifest.48cce69b28647c09fb7057242fa2ccc3.js",
     "service-worker.js": "/Dinr/build/service-worker.js",
     "static/css/2.ff29e5f6.chunk.css.map": "/Dinr/build/static/css/2.ff29e5f6.chunk.css.map",
     "static/css/main.3257615c.chunk.css.map": "/Dinr/build/static/css/main.3257615c.chunk.css.map",
@@ -23,6 +23,6 @@
     "static/css/2.ff29e5f6.chunk.css",
     "static/js/2.0ec1d01c.chunk.js",
     "static/css/main.3257615c.chunk.css",
-    "static/js/main.013e28cb.chunk.js"
+    "static/js/main.b31560cf.chunk.js"
   ]
 }
