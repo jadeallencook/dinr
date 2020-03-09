@@ -39,6 +39,59 @@ const DinnerComponent: React.FC = () => {
     });
   }
 
+  const remove = () => {
+    dispatch({
+      type: 'SET_LOADING',
+      payload: true
+    });
+    Promise.all([
+      new Promise((res, rej) => {
+        firebase
+          .database()
+          .ref(ref)
+          .remove()
+          .then(() => res())
+          .catch(() => rej());
+      }),
+      new Promise((res, rej) => {
+        firebase
+          .database()
+          .ref(`profiles/${user.uid}/hosting/${dinnerUid}`)
+          .remove()
+          .then(() => res())
+          .catch(() => rej());
+      })
+    ])
+      .then(() => {
+        dispatch({
+          type: 'SET_LOADING',
+          payload: false
+        });
+        dispatch({
+          type: 'ADD_NOTIFICATION',
+          payload: {
+            type: 'primary',
+            text: 'Successfully removed your dinner!'
+          }
+        });
+        window.location.hash = '';
+      })
+      .catch(() => {
+        dispatch({
+          type: 'SET_LOADING',
+          payload: false
+        });
+        dispatch({
+          type: 'ADD_NOTIFICATION',
+          payload: {
+            type: 'secondary',
+            text: 'Could not remove your dinner.'
+          }
+        });
+        window.location.hash = '';
+      });
+  };
+
   function reserve() {
     dispatch({
       type: 'SET_LOADING',
@@ -174,7 +227,10 @@ const DinnerComponent: React.FC = () => {
             <Link to={`/create/${ref.replace('dinners/', '')}`}>
               <button className="brand primary-bg margin-right">Edit</button>
             </Link>
-            <button className="brand secondary-bg margin-right margin-top">
+            <button
+              className="brand secondary-bg margin-right margin-top"
+              onClick={remove}
+            >
               Delete
             </button>
           </span>

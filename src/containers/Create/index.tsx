@@ -109,7 +109,7 @@ const CreateComponent: React.FC = () => {
             type: 'GET_HOSTING',
             payload: filterHosting(profile.hosting)
           });
-          window.location.hash = '#/';
+          window.location.hash = '';
         })
         .catch(error => {
           dispatch({
