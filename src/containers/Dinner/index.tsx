@@ -59,7 +59,16 @@ const DinnerComponent: React.FC = () => {
           .set(ref)
           .then(() => res());
       })
-    ]).then(() => (window.location.hash = ''));
+    ]).then(() => {
+      dispatch({
+        type: 'ADD_NOTIFICATION',
+        payload: {
+          type: 'primary',
+          text: 'Successfully reserved a plate!'
+        }
+      });
+      window.location.hash = '';
+    });
   }
 
   function unreserve() {
@@ -82,7 +91,15 @@ const DinnerComponent: React.FC = () => {
           .remove()
           .then(() => res());
       })
-    ]).then(() => (window.location.hash = ''));
+    ]).then(() => {dispatch({
+        type: 'ADD_NOTIFICATION',
+        payload: {
+          type: 'secondary',
+          text: `We've cancelled your reservation, please refrain from reserving a plate and then cancelling.`
+        }
+      });
+      window.location.hash = '';
+    });
   }
 
   if (
