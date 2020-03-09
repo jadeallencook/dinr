@@ -38,6 +38,7 @@ const BrowseComponent: React.FC = () => {
   if (
     profile &&
     profile.reservations &&
+    reservations &&
     filterReservations(profile.reservations).length !== reservations.length
   ) {
     dispatch({
@@ -48,6 +49,7 @@ const BrowseComponent: React.FC = () => {
   if (
     profile &&
     profile.hosting &&
+    hosting &&
     filterHosting(profile.hosting).length !== hosting.length
   ) {
     dispatch({
