@@ -126,6 +126,11 @@ const CreateComponent: React.FC = () => {
   return (
     <div className="CreateComponent container">
       <h2>Host Dinner</h2>
+      <p>
+        Title, description, and price are the only editable fields after posting
+        a dinner. This ensures guests that the date and time will remain the
+        same.
+      </p>
       <form onSubmit={formHandler}>
         <label>Address</label>
         <span>
