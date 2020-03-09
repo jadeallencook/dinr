@@ -43,6 +43,22 @@ const CreateComponent: React.FC = () => {
                 text: 'Invalid date'
               }
             });
+          } else if (isNaN(price)) {
+            dispatch({
+              type: 'ADD_NOTIFICATION',
+              payload: {
+                type: 'secondary',
+                text: 'Invalid price'
+              }
+            });
+          } else if (isNaN(plates)) {
+            dispatch({
+              type: 'ADD_NOTIFICATION',
+              payload: {
+                type: 'secondary',
+                text: 'Invalid plates'
+              }
+            });
           } else {
             Promise.all([
               new Promise((res, rej) => {
