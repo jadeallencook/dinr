@@ -136,7 +136,10 @@ const DinnerComponent: React.FC = () => {
               <b>Your Guests:</b>
             </p>
             <ul>
-              <li>John Doe</li>
+              {Object.keys(guests).map((uid, index) => {
+                const guest = guests[uid];
+                return <li key={`guest-${index}`}>{guest || 'Anonymous'}</li>;
+              })}
             </ul>
           </div>
         ) : user && user.uid === host.uid && !guests ? (
