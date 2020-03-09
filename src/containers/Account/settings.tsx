@@ -15,7 +15,7 @@ const SettingsComponent: React.FC = () => {
       <p>
         <small>
           No information is required but we recommend adding a
-          zipcode to find dinners nearby and post dinners.
+          zipcode for posting and searching nearby dinners.
         </small>
       </p>
       <br />
