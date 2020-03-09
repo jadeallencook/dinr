@@ -103,9 +103,17 @@ const SettingsComponent: React.FC = () => {
               .signOut()
               .then(() => {
                 dispatch({
-                type: 'SET_PROFILE',
-                payload: null
-              });
+                  type: 'SET_PROFILE',
+                  payload: null
+                });
+                dispatch({
+                  type: 'SET_HOSTING',
+                  payload: null
+                });
+                dispatch({
+                  type: 'SET_RESERVATIONS',
+                  payload: null
+                });
               })
               .catch(error => {});
           }}

@@ -1,5 +1,5 @@
 export default (
-  state: object[] = [],
+  state: object[] | null = [],
   action: {
     type: string;
     payload: object[] | null;
