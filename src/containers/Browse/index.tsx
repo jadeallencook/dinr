@@ -61,9 +61,7 @@ const BrowseComponent: React.FC = () => {
         to={
           profile &&
           profile.personal &&
-          profile.personal.zipcode &&
-          profile.personal.street &&
-          profile.personal.name
+          profile.personal.zipcode 
             ? '/create'
             : '/account'
         }
