@@ -10,6 +10,12 @@ const LoginComponent: React.FC = () => {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
+      .then(() =>
+        dispatch({
+          type: 'SET_LOADING',
+          payload: false
+        })
+      )
       .catch(error =>
         dispatch({
           type: 'ADD_NOTIFICATION',
@@ -24,6 +30,12 @@ const LoginComponent: React.FC = () => {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
+      .then(() =>
+        dispatch({
+          type: 'SET_LOADING',
+          payload: false
+        })
+      )
       .catch(error =>
         dispatch({
           type: 'ADD_NOTIFICATION',
@@ -39,6 +51,10 @@ const LoginComponent: React.FC = () => {
       <h2>Let's get cookin!</h2>
       <form
         onSubmit={event => {
+          dispatch({
+            type: 'SET_LOADING',
+            payload: true
+          });
           event.preventDefault();
           const form: any = event.target;
           const email: string = form.querySelector('input#email').value;
