@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/Dinr/build/static/css/main.3257615c.chunk.css",
-    "main.js": "/Dinr/build/static/js/main.b31560cf.chunk.js",
-    "main.js.map": "/Dinr/build/static/js/main.b31560cf.chunk.js.map",
+    "main.css": "/Dinr/build/static/css/main.08a57745.chunk.css",
+    "main.js": "/Dinr/build/static/js/main.7b034a0d.chunk.js",
+    "main.js.map": "/Dinr/build/static/js/main.7b034a0d.chunk.js.map",
     "runtime-main.js": "/Dinr/build/static/js/runtime-main.31a4375a.js",
     "runtime-main.js.map": "/Dinr/build/static/js/runtime-main.31a4375a.js.map",
     "static/css/2.ff29e5f6.chunk.css": "/Dinr/build/static/css/2.ff29e5f6.chunk.css",
-    "static/js/2.0ec1d01c.chunk.js": "/Dinr/build/static/js/2.0ec1d01c.chunk.js",
-    "static/js/2.0ec1d01c.chunk.js.map": "/Dinr/build/static/js/2.0ec1d01c.chunk.js.map",
+    "static/js/2.5c1e166a.chunk.js": "/Dinr/build/static/js/2.5c1e166a.chunk.js",
+    "static/js/2.5c1e166a.chunk.js.map": "/Dinr/build/static/js/2.5c1e166a.chunk.js.map",
     "index.html": "/Dinr/build/index.html",
-    "precache-manifest.48cce69b28647c09fb7057242fa2ccc3.js": "/Dinr/build/precache-manifest.48cce69b28647c09fb7057242fa2ccc3.js",
+    "precache-manifest.141b96d7326cf3fce1f7becdd2870969.js": "/Dinr/build/precache-manifest.141b96d7326cf3fce1f7becdd2870969.js",
     "service-worker.js": "/Dinr/build/service-worker.js",
     "static/css/2.ff29e5f6.chunk.css.map": "/Dinr/build/static/css/2.ff29e5f6.chunk.css.map",
-    "static/css/main.3257615c.chunk.css.map": "/Dinr/build/static/css/main.3257615c.chunk.css.map",
-    "static/js/2.0ec1d01c.chunk.js.LICENSE": "/Dinr/build/static/js/2.0ec1d01c.chunk.js.LICENSE",
+    "static/css/main.08a57745.chunk.css.map": "/Dinr/build/static/css/main.08a57745.chunk.css.map",
+    "static/js/2.5c1e166a.chunk.js.LICENSE": "/Dinr/build/static/js/2.5c1e166a.chunk.js.LICENSE",
     "static/media/style.scss": "/Dinr/build/static/media/banner.5aa57b03.jpg",
     "static/media/default-profile.png": "/Dinr/build/static/media/default-profile.4788048f.png",
     "static/media/dinr-logo.svg": "/Dinr/build/static/media/dinr-logo.29733819.svg"
@@ -21,8 +21,8 @@
   "entrypoints": [
     "static/js/runtime-main.31a4375a.js",
     "static/css/2.ff29e5f6.chunk.css",
-    "static/js/2.0ec1d01c.chunk.js",
-    "static/css/main.3257615c.chunk.css",
-    "static/js/main.b31560cf.chunk.js"
+    "static/js/2.5c1e166a.chunk.js",
+    "static/css/main.08a57745.chunk.css",
+    "static/js/main.7b034a0d.chunk.js"
   ]
 }
