@@ -151,6 +151,7 @@ const CreateComponent: React.FC = () => {
         <input
           className="brand margin-bottom"
           type="number"
+          min="1"
           placeholder="8"
           id="price"
           required
@@ -160,6 +161,7 @@ const CreateComponent: React.FC = () => {
         <input
           className="brand margin-bottom"
           type="number"
+          min="1"
           placeholder="5"
           id="plates"
           required
