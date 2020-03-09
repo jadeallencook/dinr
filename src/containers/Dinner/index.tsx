@@ -95,9 +95,7 @@ const DinnerComponent: React.FC = () => {
     dinner.title &&
     dinner.ref === ref &&
     host &&
-    host.personal &&
-    host.personal.name &&
-    host.personal.street
+    host.personal
   ) {
     const { datestamp, description, price, title, guests } = dinner;
     const { name, street } = host.personal;
@@ -111,11 +109,11 @@ const DinnerComponent: React.FC = () => {
         <ul>
           <li>
             <b>Host: </b>
-            {name}
+            {name ? name : 'Anonymous'}
           </li>
           <li>
             <b>Address: </b>
-            {street}
+            {street ? street : 'No Address'}
           </li>
           <li>
             <b>Date: </b>
@@ -127,7 +125,7 @@ const DinnerComponent: React.FC = () => {
           </li>
           <li>
             <b>Plates: </b>
-            {platesLeft} left
+            {platesLeft ? `${platesLeft} left` : 'Sold Out'}
           </li>
         </ul>
         {user && user.uid === host.uid && guests ? (
