@@ -28,14 +28,11 @@ const CreateComponent: React.FC = () => {
           const ampm = form.querySelector('select#ampm').value;
           const price = Number(form.querySelector('input#price').value);
           const plates = Number(form.querySelector('input#plates').value);
-          const date = new Date(
-            `${month}/${day}/${year} ${hour}:${minutes} ${ampm}`
-          );
+          const date = `${month}/${day}/${year} ${hour}:${minutes} ${ampm}`;
           const uid = `${month}_${day}_${year}_${hour}_${minutes}_${ampm}_${user.uid}`;
-          const datestamp = date.toUTCString();
           const location = zipcodeToLocation(profile?.personal?.zipcode) || '';
           const ref = `${locationToUrl(location)}_${month}_${year}/${uid}`;
-          if (new Date() > date) {
+          if (new Date() > new Date(date)) {
             dispatch({
               type: 'ADD_NOTIFICATION',
               payload: {
@@ -68,7 +65,13 @@ const CreateComponent: React.FC = () => {
                   .set({
                     ...dinnerTemp,
                     ...{
-                      ...{ title, price, plates, datestamp, description },
+                      ...{
+                        title,
+                        price,
+                        plates,
+                        date,
+                        description
+                      },
                       profile: user.uid
                     }
                   })
