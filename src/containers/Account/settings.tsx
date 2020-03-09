@@ -101,7 +101,12 @@ const SettingsComponent: React.FC = () => {
             firebase
               .auth()
               .signOut()
-              .then(() => {})
+              .then(() => {
+                dispatch({
+                type: 'SET_PROFILE',
+                payload: null
+              });
+              })
               .catch(error => {});
           }}
         >
