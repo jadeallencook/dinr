@@ -91,7 +91,8 @@ const DinnerComponent: React.FC = () => {
           .remove()
           .then(() => res());
       })
-    ]).then(() => {dispatch({
+    ]).then(() => {
+      dispatch({
         type: 'ADD_NOTIFICATION',
         payload: {
           type: 'secondary',
@@ -170,7 +171,9 @@ const DinnerComponent: React.FC = () => {
         </button>
         {user && user.uid === host.uid ? (
           <span>
-            <button className="brand primary-bg margin-right">Edit</button>
+            <Link to={`/create/${ref.replace('dinners/', '')}`}>
+              <button className="brand primary-bg margin-right">Edit</button>
+            </Link>
             <button className="brand secondary-bg margin-right margin-top">
               Delete
             </button>
