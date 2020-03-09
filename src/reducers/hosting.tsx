@@ -1,7 +1,7 @@
 export default (
-  state: object[] | null = [],
+  state: object[] = [],
   action: {
     type: string;
-    payload: object[] | null;
+    payload: object[];
   }
 ) => (action.type === 'SET_HOSTING' ? action.payload : state);

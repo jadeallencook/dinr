@@ -105,7 +105,7 @@ const SettingsComponent: React.FC = () => {
                 });
                 dispatch({
                   type: 'SET_HOSTING',
-                  payload: null
+                  payload: []
                 });
                 dispatch({
                   type: 'SET_RESERVATIONS',

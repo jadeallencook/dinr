@@ -80,7 +80,7 @@ const BrowseComponent: React.FC = () => {
           ))}
         </div>
       ) : null}
-      {user && profile && reservations.length && profile.reservations ? (
+      {user && profile && reservations && reservations.length && profile.reservations ? (
         <div>
           <h2>Upcoming Reservations</h2>
           {reservations.map((listing: any, index: number) => (

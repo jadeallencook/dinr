@@ -12,7 +12,7 @@ example: if today was 3/8/2020
 */
 
 export default (listings: object): string[] => {
-  const value = Object.keys(listings)
+  return Object.keys(listings)
     .filter((key: string) => {
       const listing = listings[key];
       const array = listing.split(/[_/]+/);
@@ -22,5 +22,4 @@ export default (listings: object): string[] => {
       return date >= new Date() ? listing : null;
     })
     .map(key => listings[key]);
-  return value;
 };
