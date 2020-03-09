@@ -199,7 +199,7 @@ const CreateComponent: React.FC = () => {
         <label>Time</label>
         <select
           className="brand margin-right"
-          defaultValue={'6'}
+          defaultValue={loaded ? loaded.hour : '6'}
           id="hour"
           disabled={!!loaded}
         >
