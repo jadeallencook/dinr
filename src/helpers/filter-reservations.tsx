@@ -15,10 +15,15 @@ example: if today was 3/8/2020
 import dinnerUidToDate from './dinner-uid-to-date';
 
 export default (reservations: object): string[] => {
-  return Object.keys(reservations).filter((key: string) => {
-    const ref = reservations[key];
-    const date = dinnerUidToDate(ref);
-    const today = new Date();
-    return date >= today;
-  }).map(key => reservations[key]);
+  return Object.keys(reservations)
+    .filter((key: string) => {
+      const ref = reservations[key];
+      const date = dinnerUidToDate(ref);
+      const today = new Date();
+      if (!date) {
+        return false;
+      }
+      return date >= today;
+    })
+    .map(key => reservations[key]);
 };

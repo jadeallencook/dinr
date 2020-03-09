@@ -14,8 +14,22 @@
     }
 */
 
-export default (hash: string): object => {
+export default (hash: string): {
+    city: string;
+    state: string;
+    month: string;
+    day: string;
+    year: string;
+    hour: string;
+    minute: string;
+    ampm: string;
+    datestamp: string;
+    uid: string;
+  } | false  => {
   const a1 = hash.split('/');
+  if (a1.length < 4) {
+    return false;
+  }
   const a2 = a1[2].split('_');
   const a3 = a1[3].split('_');
   return {

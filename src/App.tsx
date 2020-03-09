@@ -91,7 +91,7 @@ const App: React.FC = () => {
             <Route exact path="/brand">
               <BrandComponent />
             </Route>
-            <Route exact path="/create">
+            <Route path="/create">
               <CreateComponent />
             </Route>
             <Route path="/dinners">

@@ -8,7 +8,10 @@ example: if today was 3/8/2020
 
 */
 
-export default (ref: string): Date => {
+export default (ref: string): Date | null => {
+  if (!ref || ref.split('/').length < 3) {
+    return null;
+  }
   const uid = ref.split('/')[2];
   const x = uid.split('_');
   return new Date(`${x[0]}/${x[1]}/${x[2]} ${x[3]}:${x[4]} ${x[5]}`);
