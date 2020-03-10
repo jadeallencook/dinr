@@ -3,6 +3,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
 import { useSelector, useDispatch } from 'react-redux';
+import logoutHandler from '../../handlers/logout';
 
 const SettingsComponent: React.FC = () => {
   const user = useSelector(state => state['user']);
@@ -14,8 +15,8 @@ const SettingsComponent: React.FC = () => {
       <p id="email">{user.email}</p>
       <p>
         <small>
-          No information is required but we recommend adding a
-          zipcode for posting and searching nearby dinners.
+          No information is required but we recommend adding a zipcode for
+          posting and searching nearby dinners.
         </small>
       </p>
       <br />
@@ -93,27 +94,14 @@ const SettingsComponent: React.FC = () => {
         />
         <button
           className="brand brand-bg"
-          onClick={event => {
-            event.preventDefault();
-            firebase
-              .auth()
-              .signOut()
-              .then(() => {
-                dispatch({
-                  type: 'SET_PROFILE',
-                  payload: null
-                });
-                dispatch({
-                  type: 'SET_HOSTING',
-                  payload: []
-                });
-                dispatch({
-                  type: 'SET_RESERVATIONS',
-                  payload: null
-                });
-              })
-              .catch(error => {});
-          }}
+          onClick={() =>
+            logoutHandler().then(() => {
+              dispatch({
+                type: 'LOGOUT',
+                payload: null
+              });
+            })
+          }
         >
           Sign Out
         </button>
