@@ -75,7 +75,7 @@ const SettingsComponent: React.FC = () => {
         <input
           type="number"
           min="0"
-          max="99999"
+          max="10000"
           className="brand margin-bottom"
           placeholder="48708"
           id="zipcode"
