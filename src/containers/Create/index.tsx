@@ -47,7 +47,7 @@ const CreateComponent: React.FC = () => {
           text: 'Invalid date'
         }
       });
-    } else if (isNaN(price) || price <= 0) {
+    } else if (isNaN(price) || price < 0) {
       dispatch({
         type: 'ADD_NOTIFICATION',
         payload: {
@@ -151,7 +151,7 @@ const CreateComponent: React.FC = () => {
         <input
           className="brand margin-bottom"
           type="number"
-          min="1"
+          min="0"
           placeholder="8"
           id="price"
           required
