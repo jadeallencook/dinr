@@ -32,13 +32,16 @@ button.brand {
   padding: 10px 15px;
   box-sizing: border-box;
   border-radius: $radius;
+  min-width: 150px;
 }
 
 input[type='text'].brand,
 input[type='number'].brand,
 input[type='password'].brand,
+input[type='email'].brand,
 textarea.brand,
 select.brand {
+  min-width: 225px;
   font-weight: 100;
   border: none;
   font-size: 15px;

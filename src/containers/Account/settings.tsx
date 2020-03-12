@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import logoutHandler from '../../handlers/logout';
-import Form from './form';
+import UpdateProfileForm from './update-profile-form';
 
 const SettingsComponent: React.FC = () => {
   const user = useSelector(state => state['user']);
@@ -17,7 +17,7 @@ const SettingsComponent: React.FC = () => {
         </small>
       </p>
       <br />
-      <Form />
+      <UpdateProfileForm />
       <button
         className="brand brand-bg"
         onClick={() =>

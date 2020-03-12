@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import updateProfileHandler from '../../handlers/update-profile';
 
-const Form: React.FC = () => {
+const UpdateProfileForm: React.FC = () => {
   const user = useSelector(state => state['user']);
   const profile = useSelector(state => state['profile']);
   const [name, setName] = useState(profile?.personal?.name || '');
@@ -73,4 +73,4 @@ const Form: React.FC = () => {
   );
 };
 
-export default Form;
+export default UpdateProfileForm;
