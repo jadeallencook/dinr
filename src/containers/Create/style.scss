@@ -10,4 +10,7 @@
     >p {
         font-size: $med-font;
     }
+    select {
+        min-width: 0;
+    }
 }

@@ -32,7 +32,11 @@ const DinnerComponent: React.FC = () => {
     });
   }
 
-  if ((!host && dinner) || (host && host.uid !== dinner.profile)) {
+  if (
+    dinner &&
+    dinner.profile &&
+    (!host || (host && host.uid !== dinner.profile))
+  ) {
     dispatch({
       type: 'GET_HOST',
       payload: dinner.profile
@@ -216,6 +220,7 @@ const DinnerComponent: React.FC = () => {
             <b>There are currently no reservations.</b>
           </div>
         ) : null}
+        <br /><br />
         <button
           className="brand brand-bg margin-right"
           onClick={() => (window.location.hash = '')}
@@ -224,6 +229,7 @@ const DinnerComponent: React.FC = () => {
         </button>
         {user && user.uid === host.uid ? (
           <span>
+          <br /><br />
             <Link to={`/create/${ref.replace('dinners/', '')}`}>
               <button className="brand primary-bg margin-right">Edit</button>
             </Link>

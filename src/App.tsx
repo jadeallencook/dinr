@@ -60,7 +60,9 @@ const App: React.FC = () => {
               payload: snapshot.val().personal.zipcode
             });
           }
-          window.location.hash = '';
+          if (window.location.hash.indexOf('#/dinners/') === -1) {
+            window.location.hash = '';
+          }
         });
     } else {
       dispatch({
