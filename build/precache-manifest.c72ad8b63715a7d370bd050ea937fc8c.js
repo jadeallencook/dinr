@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5771e305031ef4518aa3720cda36bc88",
+    "revision": "bace656be1d4a9c2eb5de72da80dbc86",
     "url": "/Dinr/build/index.html"
   },
   {
-    "revision": "eb0deaa6c85d76af252c",
+    "revision": "add2ac9a6012227edcd7",
     "url": "/Dinr/build/static/css/2.ff29e5f6.chunk.css"
   },
   {
-    "revision": "fc5186d664044bcdfa07",
-    "url": "/Dinr/build/static/css/main.41fa52ff.chunk.css"
+    "revision": "e1b21d0d7bcbf7546340",
+    "url": "/Dinr/build/static/css/main.07effd79.chunk.css"
   },
   {
-    "revision": "eb0deaa6c85d76af252c",
-    "url": "/Dinr/build/static/js/2.5c1e166a.chunk.js"
+    "revision": "add2ac9a6012227edcd7",
+    "url": "/Dinr/build/static/js/2.858b8a6b.chunk.js"
   },
   {
     "revision": "2e7e5a466ae113f07513391c0542446b",
-    "url": "/Dinr/build/static/js/2.5c1e166a.chunk.js.LICENSE"
+    "url": "/Dinr/build/static/js/2.858b8a6b.chunk.js.LICENSE"
   },
   {
-    "revision": "fc5186d664044bcdfa07",
-    "url": "/Dinr/build/static/js/main.99fc6f7e.chunk.js"
+    "revision": "e1b21d0d7bcbf7546340",
+    "url": "/Dinr/build/static/js/main.2ae06634.chunk.js"
   },
   {
     "revision": "2b665b954fc17cb4551d",
