@@ -55,7 +55,12 @@ const App: React.FC = () => {
               type: 'SET_ZIPCODE',
               payload: snapshot.val().personal.zipcode
             });
+            dispatch({
+              type: 'GET_RESULTS',
+              payload: snapshot.val().personal.zipcode
+            });
           }
+          window.location.hash = '';
         });
     } else {
       dispatch({
