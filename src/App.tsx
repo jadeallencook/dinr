@@ -55,6 +55,13 @@ const App: React.FC = () => {
               type: 'SET_ZIPCODE',
               payload: snapshot.val().personal.zipcode
             });
+            dispatch({
+              type: 'GET_RESULTS',
+              payload: snapshot.val().personal.zipcode
+            });
+          }
+          if (window.location.hash.indexOf('#/dinners/') === -1) {
+            window.location.hash = '';
           }
         });
     } else {

@@ -4,4 +4,7 @@ export default (
     type: string;
     payload: object | null;
   }
-) => (action.type === 'SET_PROFILE' ? action.payload : state);
+) =>
+  action.type === 'SET_PROFILE' || action.type === 'LOGOUT'
+    ? action.payload
+    : state;

@@ -32,12 +32,69 @@ const DinnerComponent: React.FC = () => {
     });
   }
 
-  if ((!host && dinner) || (host && host.uid !== dinner.profile)) {
+  if (
+    dinner &&
+    dinner.profile &&
+    (!host || (host && host.uid !== dinner.profile))
+  ) {
     dispatch({
       type: 'GET_HOST',
       payload: dinner.profile
     });
   }
+
+  const remove = () => {
+    dispatch({
+      type: 'SET_LOADING',
+      payload: true
+    });
+    Promise.all([
+      new Promise((res, rej) => {
+        firebase
+          .database()
+          .ref(ref)
+          .remove()
+          .then(() => res())
+          .catch(() => rej());
+      }),
+      new Promise((res, rej) => {
+        firebase
+          .database()
+          .ref(`profiles/${user.uid}/hosting/${dinnerUid}`)
+          .remove()
+          .then(() => res())
+          .catch(() => rej());
+      })
+    ])
+      .then(() => {
+        dispatch({
+          type: 'SET_LOADING',
+          payload: false
+        });
+        dispatch({
+          type: 'ADD_NOTIFICATION',
+          payload: {
+            type: 'primary',
+            text: 'Successfully removed your dinner!'
+          }
+        });
+        window.location.hash = '';
+      })
+      .catch(() => {
+        dispatch({
+          type: 'SET_LOADING',
+          payload: false
+        });
+        dispatch({
+          type: 'ADD_NOTIFICATION',
+          payload: {
+            type: 'secondary',
+            text: 'Could not remove your dinner.'
+          }
+        });
+        window.location.hash = '';
+      });
+  };
 
   function reserve() {
     dispatch({
@@ -163,6 +220,7 @@ const DinnerComponent: React.FC = () => {
             <b>There are currently no reservations.</b>
           </div>
         ) : null}
+        <br /><br />
         <button
           className="brand brand-bg margin-right"
           onClick={() => (window.location.hash = '')}
@@ -171,10 +229,14 @@ const DinnerComponent: React.FC = () => {
         </button>
         {user && user.uid === host.uid ? (
           <span>
+          <br /><br />
             <Link to={`/create/${ref.replace('dinners/', '')}`}>
               <button className="brand primary-bg margin-right">Edit</button>
             </Link>
-            <button className="brand secondary-bg margin-right margin-top">
+            <button
+              className="brand secondary-bg margin-right margin-top"
+              onClick={remove}
+            >
               Delete
             </button>
           </span>

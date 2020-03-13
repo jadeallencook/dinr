@@ -105,11 +105,13 @@ const CreateComponent: React.FC = () => {
                   : 'Successfully added your dinner!'
             }
           });
-          dispatch({
-            type: 'GET_HOSTING',
-            payload: filterHosting(profile.hosting)
-          });
-          window.location.hash = '#/';
+          if (action === 'save') {
+            dispatch({
+              type: 'GET_HOSTING',
+              payload: filterHosting(profile.hosting)
+            });
+          }
+          window.location.hash = '';
         })
         .catch(error => {
           dispatch({

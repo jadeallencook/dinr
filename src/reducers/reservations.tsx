@@ -4,4 +4,7 @@ export default (
     type: string;
     payload: object[] | null;
   }
-) => (action.type === 'SET_RESERVATIONS' ? action.payload : state);
+) =>
+  action.type === 'SET_RESERVATIONS' || action.type === 'LOGOUT'
+    ? action.payload
+    : state;

@@ -57,13 +57,17 @@ const BrowseComponent: React.FC = () => {
       payload: filterHosting(profile.hosting)
     });
   }
+  if (profile && !profile.hosting && hosting && hosting.length > 0) {
+    dispatch({
+      type: 'SET_HOSTING',
+      payload: []
+    });
+  }
   return (
     <div className="BrowseComponent container">
       <Link
         to={
-          profile &&
-          profile.personal &&
-          profile.personal.zipcode 
+          profile && profile.personal && profile.personal.zipcode
             ? '/create'
             : '/account'
         }
@@ -80,7 +84,11 @@ const BrowseComponent: React.FC = () => {
           ))}
         </div>
       ) : null}
-      {user && profile && reservations && reservations.length && profile.reservations ? (
+      {user &&
+      profile &&
+      reservations &&
+      reservations.length &&
+      profile.reservations ? (
         <div>
           <h2>Upcoming Reservations</h2>
           {reservations.map((listing: any, index: number) => (
