@@ -54,6 +54,8 @@ const UpdateProfileForm: React.FC = () => {
       <input
         type="number"
         className="brand margin-bottom"
+        min="10000"
+        max="99999"
         value={zipcode}
         onChange={event => setZipcode(event.target.value)}
       />
