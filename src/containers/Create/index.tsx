@@ -47,7 +47,7 @@ const CreateComponent: React.FC = () => {
           text: 'Invalid date'
         }
       });
-    } else if (isNaN(price)) {
+    } else if (isNaN(price) || price < 0) {
       dispatch({
         type: 'ADD_NOTIFICATION',
         payload: {
@@ -55,7 +55,7 @@ const CreateComponent: React.FC = () => {
           text: 'Invalid price'
         }
       });
-    } else if (isNaN(plates)) {
+    } else if (isNaN(plates) || plates <= 0) {
       dispatch({
         type: 'ADD_NOTIFICATION',
         payload: {
@@ -153,6 +153,7 @@ const CreateComponent: React.FC = () => {
         <input
           className="brand margin-bottom"
           type="number"
+          min="0"
           placeholder="8"
           id="price"
           required
@@ -162,6 +163,7 @@ const CreateComponent: React.FC = () => {
         <input
           className="brand margin-bottom"
           type="number"
+          min="1"
           placeholder="5"
           id="plates"
           required
