@@ -14,6 +14,7 @@ const CreateComponent: React.FC = () => {
   const user = useSelector(state => state['user']);
   const dinner = useSelector(state => state['dinner']);
   const dispatch = useDispatch();
+  const date = new Date();
   const loaded = dinnerHashToObject(window.location.hash);
   if (loaded && !dinner) {
     window.location.hash = '/error';
@@ -82,7 +83,7 @@ const CreateComponent: React.FC = () => {
                 profile: user.uid
               }
             })
-            .then(response => res())
+            .then(response => res(null))
             .catch(error => rej(error));
         }),
         new Promise((res, rej) => {
@@ -90,7 +91,7 @@ const CreateComponent: React.FC = () => {
             .database()
             .ref(`profiles/${user.uid}/hosting/${uid}`)
             .set(ref)
-            .then(() => res())
+            .then(() => res(null))
             .catch(error => rej(error));
         })
       ])
@@ -203,7 +204,7 @@ const CreateComponent: React.FC = () => {
           })}
         </select>
         <select className="brand margin-bottom" id="year" disabled={!!loaded}>
-          <option>2020</option>
+          <option>{date.getFullYear()}</option>
         </select>
         <label>Time</label>
         <select
